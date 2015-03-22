@@ -24,7 +24,7 @@ def load():
     i = 0
     while i < 2:
         i += 1
-        level_list.append(Level.generate(i))
+        level_list.append(Level.Level(i))
     
     #sets this to the current level
     current_level_num = 0
@@ -74,6 +74,9 @@ def load():
         #updates the players and sees if they have the conditions to finish the level
         levelCompleteOne = playerOne.update(current_level.platform_list, playerTwo)
         levelCompleteTwo = playerTwo.update(current_level.platform_list, playerOne)
+        
+        current_level.update(playerOne, playerTwo)
+        
         if levelCompleteOne and levelCompleteTwo:
             #if there are still levels remaining
             if current_level_num < len(level_list) - 1:
@@ -89,6 +92,8 @@ def load():
                 playerTwo.speedY = 0
                 playerOne.hasKey = False
                 playerTwo.hasKey = False
+                if playerTwo.crouching:
+                    playerTwo.standUp(current_level.platform_list)
                 current_level_num += 1
                 current_level = level_list[current_level_num]
             
@@ -108,9 +113,9 @@ def load():
         #DOESN'T WORK ON MACS
         timer.tick(60)
         
-        pygame.display.flip()
+        pygame.display.update()
     
-    return 0
+    return current_level_num
 
 #Player class
 class Player(pygame.sprite.Sprite):
@@ -156,11 +161,19 @@ class Player(pygame.sprite.Sprite):
         self.playerNum = playerNum #1 for jumping player, 2 for crouching player
         self.hasKey = False
         
+        self.disabled = True
+        
     def update(self, platform_list, otherPlayer):
         levelComplete = False
         
         #calculates new y speed
         self.calcGrav()
+ 
+        if self.disabled:
+            self.speedX = 0
+            if self.onGround == True:
+                self.speedY = 0
+            self.disabled = False
  
         #moves in x direction
         self.rect.x += self.speedX
@@ -200,13 +213,25 @@ class Player(pygame.sprite.Sprite):
         #checks for collisions
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         for block in collision_list:
+            
+            #if the player is on top of a button, activate the button
+            if isinstance(block, Level.Button):
+                block.activate()
+            
             #just like collisions with x direction
             if isinstance(block, Level.Platform):
-                if self.speedY > 0:
-                    self.rect.bottom = block.rect.top
-                    self.onGround = True
-                elif self.speedY < 0:
-                    self.rect.top = block.rect.bottom
+                #If the player is under a wall, stop the player's and the wall's movement
+                if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
+                    block.rect.bottom = self.rect.top + 1
+                    block.disabled = True
+                    self.disabled = True
+                    
+                else:
+                    if self.speedY > 0:
+                        self.rect.bottom = block.rect.top
+                        self.onGround = True
+                    elif self.speedY < 0:
+                        self.rect.top = block.rect.bottom
                 
                 # Stop moving vertically if we hit a platform
                 self.speedY = 0
@@ -233,13 +258,11 @@ class Player(pygame.sprite.Sprite):
             
     def calcGrav(self):
         #if they're not on the ground
-        if ~self.onGround:
-            #initial y speed if they walk off a platform or hit the top of a platform
-            if self.speedY == 0:
-                self.speedY = 1
-            #acceleration for gravity
-            else:
-                self.speedY += .35
+        if self.speedY == 0:
+            self.speedY = 1
+        #acceleration for gravity
+        else:
+            self.speedY += .35
  
         #checks if they are past the bottom of the screen
         #not really needed since platforms will cover the bottom of the screen
@@ -264,7 +287,6 @@ class Player(pygame.sprite.Sprite):
         y = self.rect.y
         
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
-        self.image.set_colorkey((102,255,255))
 
         #updating new location
         self.rect = self.image.get_rect()
@@ -274,11 +296,12 @@ class Player(pygame.sprite.Sprite):
         self.crouching = False
         
         #if standing up makes you collide with another platform, go back to crouching
-        #TODO: FIX BUG: can't stand up while at the gate
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
-        print (len(collision_list))
-        if len(collision_list) > 0:
-            self.crouch()
+        
+        for block in collision_list:
+            if isinstance(block, Level.Platform):
+                self.crouch()
+                break
         
     #only for player Two       
     def crouch(self):
@@ -295,7 +318,6 @@ class Player(pygame.sprite.Sprite):
         y = self.rect.y
         
         self.image = pygame.transform.scale(self.image, (self.width, self.height))
-        self.image.set_colorkey((102,255,255))
 
         #new location
         self.rect = self.image.get_rect()
@@ -306,7 +328,7 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         if self.onGround:
-            self.speedY = -15 / self.playerNum #different values for different players
+            self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
  
     def draw(self, screen):
@@ -320,6 +342,7 @@ class Player(pygame.sprite.Sprite):
  
     def stop(self):
         self.speedX = 0        
+    
     def animate(self):
         if self.speedX < 0 and self.speedY == 0:
             #moving left
