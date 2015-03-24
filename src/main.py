@@ -17,9 +17,15 @@ def load():
     
     pygame.display.set_caption("Over Under")
     
+    #creating the reset button
     resetLoc = (30, 30)
     resetSize = (45, 45)
     reset = Button("../resources/reset.png", resetLoc, resetSize)
+    
+    #creating the home button
+    homeLoc = (87, 30)
+    homeSize = (45, 45)
+    home = Button("../resources/home.png", homeLoc, homeSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -48,12 +54,32 @@ def load():
         
         #if the player exits the game
         for event in pygame.event.get():
-            if event.type == pygame.QUIT:
+            if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 done = True
                 sys.exit()
                 
             #checks for various key presses
             if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_c:
+                    if current_level_num == len(level_list) - 1:
+                        current_level_num += 1
+                        import EndScreen
+                        EndScreen.load()
+                        return current_level_num
+                    playerOne.rect.x = 20
+                    playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
+                    playerTwo.rect.x = 80
+                    playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
+                    playerOne.speedX = 0
+                    playerOne.speedY = 0
+                    playerTwo.speedX = 0
+                    playerTwo.speedY = 0
+                    playerOne.hasKey = False
+                    playerTwo.hasKey = False
+                    if playerTwo.crouching:
+                        playerTwo.standUp(current_level.platform_list)
+                    current_level_num += 1
+                    current_level = level_list[current_level_num]
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -129,9 +155,13 @@ def load():
         tutorialText = current_level.message
         tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
         screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
+       
+        #to determine what button was pressed
         screen.blit(reset.image, reset)
+        screen.blit(home.image, home)
         if (game == 2):
-            Button.mouseClick(reset, resetSize, resetLoc)
+            Button.mouseClick(reset, resetSize, resetLoc, 1)
+            Button.mouseClick(home, homeSize, homeLoc, 2)
         
         
         #for 60fps
@@ -190,7 +220,7 @@ class Player(pygame.sprite.Sprite):
         
     def update(self, platform_list, otherPlayer):
         levelComplete = False
-        
+        self.image.set_colorkey(pygame.Color("white"))
         #calculates new y speed
         self.calcGrav()
  
@@ -352,23 +382,29 @@ class Player(pygame.sprite.Sprite):
         self.crouching = True       
 
     def jump(self):
+        self.image.set_colorkey(pygame.Color("white"))
         if self.onGround:
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
  
     def draw(self, screen):
+        self.image.set_colorkey(pygame.Color("white"))
         screen.blit(self.image, (self.rect.x, self.rect.y))
 
     def go_left(self):
+        self.image.set_colorkey(pygame.Color("white"))
         self.speedX = -6
  
     def go_right(self):
+        self.image.set_colorkey(pygame.Color("white"))
         self.speedX = 6
  
     def stop(self):
+        self.image.set_colorkey(pygame.Color("white"))
         self.speedX = 0        
     
     def animate(self):
+        self.image.set_colorkey(pygame.Color("white"))
         if self.speedX < 0 and self.speedY == 0:
             #moving left
             if not self.crouching:
@@ -413,15 +449,22 @@ class Button(pygame.sprite.Sprite):
         self.rect.y = location[1]
 
         
-    def mouseClick(self, buttonSize, location):
+    def mouseClick(self, buttonSize, location, file):
 
-        
         mouseLoc = pygame.mouse.get_pos()
 
+        #file 1 is to reset the level
+        if file == 1:
+            if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
+                if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                    load()
+        #file 1 is to return to main menu
+        if file == 2:
+            if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
+                if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                    import MainMenu
+                    MainMenu.menu()
         
-        if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
-            if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
-                load()
         
 if(__name__ == "__main__"):
     load()
