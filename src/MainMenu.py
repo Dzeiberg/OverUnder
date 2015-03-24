@@ -2,14 +2,11 @@
 
 import pygame
 from pygame.locals import * 
-import Options, Instructions, main, EndScreen
+import Options, Instructions, main, sys
 
 pygame.init()
 
-#Setting the caption
-pygame.display.set_caption("Main Menu")
-
-screenSize= 1100, 700
+screenSize= 1280, 720
 white= 255,255, 255
 blue = 102, 255, 255
 
@@ -34,13 +31,13 @@ class Image(pygame.sprite.Sprite):
             if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                 file.load()
                 
-                if (file == main):
-                    EndScreen.load()
                     
 #bg_music = pygame.mixer.music
 #bg_music.load("bgmusic.mp3")
                 
 def menu():
+    #Setting the caption
+    pygame.display.set_caption("Main Menu")
  
     #setting variables for buttons
     startLoc = (50, 50)
@@ -73,6 +70,7 @@ def menu():
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 game = 1
+                sys.exit()
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game = 2
                

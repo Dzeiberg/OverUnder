@@ -1,9 +1,10 @@
 import pygame
 from pygame.locals import *
+import sys 
 
 pygame.init()
 
-screenSize = 1100, 700
+screenSize = 1280, 720
 white = 255, 255, 255
 black = 0, 0, 0
 
@@ -21,13 +22,13 @@ class Image(pygame.sprite.Sprite):
         
 
 # a variable to control how long to run the game
-def load ():
+def load():
     global screen
     screen = pygame.display.set_mode(screenSize)
     pygame.display.set_caption("Congratulations!")
     game = 0
     
-    homeLoc = (30, 590)
+    homeLoc = (30, 620)
     homeSize = (100, 100)
     homeButton = Image((black),"../resources/home.png", homeLoc, homeSize)
     
@@ -45,12 +46,14 @@ def load ():
         for event in pygame.event.get():
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 game = 1
+                sys.exit()
             
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseLoc = pygame.mouse.get_pos()
                 if (mouseLoc[0] > homeLoc[0] and mouseLoc[0] < (homeLoc[0] + homeSize[0])):
                     if (mouseLoc[1] > homeLoc[1] and mouseLoc[1] < (homeLoc[1] + homeSize[1])):
                         game = 1
+                        import MainMenu
+                        MainMenu.menu()
                         
         pygame.display.update()
-
