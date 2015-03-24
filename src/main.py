@@ -3,8 +3,6 @@ import pygame, Key, Gate, Level
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
-#test for github
-
 #called by the Main Menu
 def load():
     pygame.init()
