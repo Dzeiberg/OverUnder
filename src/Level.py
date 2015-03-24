@@ -1,4 +1,5 @@
 import pygame, Key, Gate
+from __builtin__ import False
 
 class Level(object):
     platform_list = None
@@ -180,6 +181,7 @@ class Level(object):
             
     def update(self, playerOne, playerTwo):
         for button in self.button_list:
+            button.updateColor()            
             button.wall.update(button.activated, playerOne, playerTwo)
             button.deactivate()
         
@@ -260,4 +262,10 @@ class Button(pygame.sprite.Sprite):
         self.activated = True
         
     def deactivate(self):
-        self.activated = False   
+        self.activated = False
+    
+    def updateColor(self):
+        if (self.activated):
+            self.image.fill((255, 0, 0))
+        else:
+            self.image.fill((0, 255, 0))
