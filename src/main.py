@@ -1,4 +1,4 @@
-import pygame, Key, Gate, Level
+import pygame, Key, Gate, Level, sys
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -16,6 +16,10 @@ def load():
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
+    
+    resetLoc = (30, 30)
+    resetSize = (45, 45)
+    reset = Button("../resources/reset.png", resetLoc, resetSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -40,10 +44,13 @@ def load():
     #main game loop
     done = False
     while not done:
+        game = 1
+        
         #if the player exits the game
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 done = True
+                sys.exit()
                 
             #checks for various key presses
             if event.type == pygame.KEYDOWN:
@@ -76,6 +83,9 @@ def load():
                     playerTwo.stop()
                 if event.key == pygame.K_RIGHT and playerTwo.speedX > 0:
                     playerTwo.stop()
+                    
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                game = 2
  
         #updates the players and sees if they have the conditions to finish the level
         levelCompleteOne = playerOne.update(current_level.platform_list, playerTwo)
@@ -106,6 +116,8 @@ def load():
             #no levels left, return and exit back to the main menu
             else:
                 current_level_num += 1
+                import EndScreen
+                EndScreen.load()
                 return current_level_num
         
         #draw the platforms
@@ -117,6 +129,9 @@ def load():
         tutorialText = current_level.message
         tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
         screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
+        screen.blit(reset.image, reset)
+        if (game == 2):
+            Button.mouseClick(reset, resetSize, resetLoc)
         
         
         #for 60fps
@@ -386,6 +401,27 @@ class Player(pygame.sprite.Sprite):
             self.rightIDX = 0
             self.image = self.rightImages[self.rightIDX]
             self.image = pygame.transform.scale(self.image, (self.width, self.height))
+            
+class Button(pygame.sprite.Sprite):
+    def __init__(self, filename, location, size):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(filename).convert()
+        #self.image.set_colorkey(color) 
+        self.image = pygame.transform.scale(self.image, size)
+        self.rect = self.image.get_rect()
+        self.rect.x = location[0]
+        self.rect.y = location[1]
+
+        
+    def mouseClick(self, buttonSize, location):
+
+        
+        mouseLoc = pygame.mouse.get_pos()
+
+        
+        if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
+            if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                load()
         
 if(__name__ == "__main__"):
     load()
