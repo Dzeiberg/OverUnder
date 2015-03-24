@@ -171,6 +171,12 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+        self.message = ""
+        if levelNum == 1:
+            self.message = "Each player can grab one key. Collect them both to unlock the gate!"
+        elif levelNum == 2:
+            self.message = "Stand on the buttons to move the walls!"
+            
             
     def update(self, playerOne, playerTwo):
         for button in self.button_list:

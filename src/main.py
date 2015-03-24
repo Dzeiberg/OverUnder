@@ -7,6 +7,12 @@ SCREEN_HEIGHT = 720
 def load():
     pygame.init()
     
+    pygame.font.init()
+    font = pygame.font.SysFont("Courier New", 18)
+    
+    tutorialText = ""
+    tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
+    
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
@@ -108,6 +114,10 @@ def load():
         #draw the players
         playerOne.draw(screen)
         playerTwo.draw(screen)
+        tutorialText = current_level.message
+        tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
+        screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
+        
         
         #for 60fps
         #DOESN'T WORK ON MACS
