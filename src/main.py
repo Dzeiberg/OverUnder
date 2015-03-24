@@ -1,7 +1,8 @@
-import pygame, Key, Gate, Level, sys
+import pygame, Key, Gate, Level, sys, EndScreen
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+    
 
 #called by the Main Menu
 def load():
@@ -60,10 +61,9 @@ def load():
                 
             #checks for various key presses
             if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_c:
+                if event.key == pygame.K_RETURN:
                     if current_level_num == len(level_list) - 1:
                         current_level_num += 1
-                        import EndScreen
                         EndScreen.load()
                         return current_level_num
                     playerOne.rect.x = 20
@@ -142,7 +142,6 @@ def load():
             #no levels left, return and exit back to the main menu
             else:
                 current_level_num += 1
-                import EndScreen
                 EndScreen.load()
                 return current_level_num
         
@@ -162,8 +161,7 @@ def load():
         if (game == 2):
             Button.mouseClick(reset, resetSize, resetLoc, 1)
             Button.mouseClick(home, homeSize, homeLoc, 2)
-        
-        
+            
         #for 60fps
         #DOESN'T WORK ON MACS
         timer.tick(60)
