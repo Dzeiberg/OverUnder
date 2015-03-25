@@ -68,7 +68,7 @@ def load(current_level_num):
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2)
     
     #sets this to the current level
-    TOTAL_LEVELS = 6
+    TOTAL_LEVELS = 5
 
     current_level = Level.Level(current_level_num)
     
