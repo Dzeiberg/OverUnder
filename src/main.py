@@ -60,7 +60,7 @@ def load(current_level_num):
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2)
     
     #sets this to the current level
-    TOTAL_LEVELS = 4
+    TOTAL_LEVELS = 5
 
     current_level = Level.Level(current_level_num)
     
@@ -444,7 +444,6 @@ class Button(pygame.sprite.Sprite):
 
         
     def mouseClick(self, buttonSize, location, file, current_level_num):
-
         mouseLoc = pygame.mouse.get_pos()
 
         #file 1 is to reset the level
