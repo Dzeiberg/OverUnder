@@ -2,21 +2,44 @@ import pygame, Key, Gate, Level, sys, EndScreen
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+
+#background music
+pygame.mixer.init()
+backgroundMusic = pygame.mixer.music
+backgroundMusic.load('../resources/bgmusic.mp3')
     
+def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
+    playerOne.rect.x = 20
+    playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
+    playerTwo.rect.x = 80
+    playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
+    playerOne.speedX = 0
+    playerOne.speedY = 0
+    playerTwo.speedX = 0
+    playerTwo.speedY = 0
+    playerOne.hasKey = False
+    playerTwo.hasKey = False
+    if playerTwo.crouching:
+        playerTwo.standUp(current_level.platform_list)
+    
+    return current_level_num + (1 - reset)
 
 #called by the Main Menu
 def load(current_level_num):
     pygame.init()
-    '''
+    
     pygame.font.init()
     font = pygame.font.SysFont("Courier New", 18)
     
     tutorialText = ""
     tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
-    '''
+    
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
+    
+    #play background music
+    backgroundMusic.play(-1, 0)
     
     #creating the reset button
     resetLoc = (30, 30)
@@ -56,21 +79,10 @@ def load(current_level_num):
                 if event.key == pygame.K_RETURN:
                     if current_level_num == TOTAL_LEVELS:
                         EndScreen.load()
-                        return 0
-                    playerOne.rect.x = 20
-                    playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-                    playerTwo.rect.x = 80
-                    playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-                    playerOne.speedX = 0
-                    playerOne.speedY = 0
-                    playerTwo.speedX = 0
-                    playerTwo.speedY = 0
-                    playerOne.hasKey = False
-                    playerTwo.hasKey = False
-                    if playerTwo.crouching:
-                        playerTwo.standUp(current_level.platform_list)
-                    current_level_num += 1
+                        return current_level_num
+                    current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
+                    
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -119,20 +131,7 @@ def load(current_level_num):
                 return 0
             else:
                 #restarts the players and loads the next level
-                #TODO: make a separate function for this, set players at different locations depending on the level
-                playerOne.rect.x = 20
-                playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerTwo.rect.x = 80
-                playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerOne.speedX = 0
-                playerOne.speedY = 0
-                playerTwo.speedX = 0
-                playerTwo.speedY = 0
-                playerOne.hasKey = False
-                playerTwo.hasKey = False
-                if playerTwo.crouching:
-                    playerTwo.standUp(current_level.platform_list)
-                current_level_num += 1
+                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                 current_level = Level.Level(current_level_num)
         
         #draw the platforms
@@ -141,9 +140,9 @@ def load(current_level_num):
         #draw the players
         playerOne.draw(screen)
         playerTwo.draw(screen)
-        #tutorialText = current_level.message
-        #tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
-        #screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
+        tutorialText = current_level.message
+        tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
+        screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
        
         #to determine what button was pressed
         screen.blit(reset.image, reset)
@@ -155,19 +154,8 @@ def load(current_level_num):
             Button.mouseClick(home, homeSize, homeLoc, 2, current_level_num)
         
         if resetClicked:
-            current_level = Level.Level(current_level_num)
-            playerOne.rect.x = 20
-            playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-            playerTwo.rect.x = 80
-            playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-            playerOne.speedX = 0
-            playerOne.speedY = 0
-            playerTwo.speedX = 0
-            playerTwo.speedY = 0
-            playerOne.hasKey = False
-            playerTwo.hasKey = False
-            if playerTwo.crouching:
-                playerTwo.standUp(current_level.platform_list)
+                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+                current_level = Level.Level(current_level_num)
         
         #for 60fps
         #DOESN'T WORK ON MACS
@@ -269,6 +257,8 @@ class Player(pygame.sprite.Sprite):
          
         #moves in y direction    
         self.rect.y += self.speedY
+ 
+        self.onGround = False
  
         #checks for collisions
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
@@ -463,9 +453,11 @@ class Button(pygame.sprite.Sprite):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     return True
 
+        #file 2 is to return to main menu
         if file == 2:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                    backgroundMusic.fadeout(100)
                     import MainMenu
                     MainMenu.menu(current_level_num)
         

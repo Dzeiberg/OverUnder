@@ -165,6 +165,45 @@ class Level(object):
                 "P         PPPP                                                 P",
                 "P         PPPP         K                                      GP",
                 "PPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+            
+        elif levelNum == 5:
+            levelMap = [
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P            PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP      P",
+                "P                              P                               P",
+                "P                              P                               P",
+                "P                              P                               P",
+                "P                              P                               P",
+                "P         PPPPPPPPPPPPPPPPPPPPPP      PPPPPPPPPPPPPPPPPPPPPPPPPP",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                              K  P                  P",
+                "P      PPPP      PPPPPPPPPPPPPPPPPPPPPPPPPPPP                  P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      P                                                       P",
+                "P      PP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP        PPPPPP PPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP                                      P           P",
+                "P                                                              P",
+                "P                                                  P           P",
+                "P                  PPPPPPPPP      K                           GP",
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPP PPPPPPPP PPPPPPPPPPPPPPP"]
         
         for row in levelMap:
                 for col in row:
@@ -209,6 +248,21 @@ class Level(object):
             self.platform_list.add(self.wall)
             
             self.button = Button(460, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(660, 660, 700, 160, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(920, 180, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+        elif levelNum == 5:
+            self.wall = Wall(600, 200, 280, -40, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(580, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
