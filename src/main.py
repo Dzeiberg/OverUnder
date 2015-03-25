@@ -1,27 +1,16 @@
-<<<<<<< HEAD
-import pygame, Key, Gate, Level
-=======
 import pygame, Key, Gate, Level, sys, EndScreen
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
 
-<<<<<<< HEAD
-#called by the Main Menu
-def load():
-    pygame.init()
-    
-=======
 #background music
 pygame.mixer.init()
-backgroundMusic = pygame.mixer.music
-backgroundMusic.load('../resources/bgmusic.mp3')
-    
+#backgroundMusic = pygame.mixer.music
+#backgroundMusic.load('../resources/bgmusic.mp3')
+pygame.mixer.music.load('../resources/bgmusic.OGG')
+p1Color="red"
+p2Color="red"    
 def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
-    if not reset:
-        current_level_num += 1
-    
     playerOne.rect.x = 20
     playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
     playerTwo.rect.x = 80
@@ -32,18 +21,14 @@ def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     playerTwo.speedY = 0
     playerOne.hasKey = False
     playerTwo.hasKey = False
-    
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
-        
-    if current_level_num == 4:
-        playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
-        playerTwo.rect.x = 20
     
-    return current_level_num
+    return current_level_num + (1 - reset)
 
 #called by the Main Menu
 def load(current_level_num):
+    global p1Color,p2Color
     pygame.init()
     
     pygame.font.init()
@@ -52,16 +37,13 @@ def load(current_level_num):
     tutorialText = ""
     tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
     
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
     
-<<<<<<< HEAD
-=======
     #play background music
-    backgroundMusic.play(-1, 0)
-    
+    #backgroundMusic.play(-1, 0)
+    pygame.mixer.music.play(-1, 0)
     #creating the reset button
     resetLoc = (30, 30)
     resetSize = (45, 45)
@@ -72,41 +54,16 @@ def load(current_level_num):
     homeSize = (45, 45)
     home = Button("../resources/home.png", homeLoc, homeSize)
     
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
     #Does not work properly on Macs
     timer = pygame.time.Clock()
     
     #Initializes the starting locations of player
     #TODO: initialize them in a different location depending on the level number
-    playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1)
-    playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2)
-    
-<<<<<<< HEAD
-    #Creates the array of level objects
-    level_list = []
-    i = 0
-    while i < 2:
-        i += 1
-        level_list.append(Level.Level(i))
+    playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1,p1Color)
+    playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
     
     #sets this to the current level
-    current_level_num = 0
-    current_level = level_list[current_level_num]
-    
-    
-    #main game loop
-    done = False
-    while not done:
-        #if the player exits the game
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                done = True
-                
-            #checks for various key presses
-            if event.type == pygame.KEYDOWN:
-=======
-    #sets this to the current level
-    TOTAL_LEVELS = 6
+    TOTAL_LEVELS = 4
 
     current_level = Level.Level(current_level_num)
     
@@ -129,7 +86,6 @@ def load(current_level_num):
                     current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
                     
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -159,14 +115,9 @@ def load(current_level_num):
                     playerTwo.stop()
                 if event.key == pygame.K_RIGHT and playerTwo.speedX > 0:
                     playerTwo.stop()
-<<<<<<< HEAD
- 
-        
-=======
                     
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game = 2
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
  
         #updates the players and sees if they have the conditions to finish the level
         levelCompleteOne = playerOne.update(current_level.platform_list, playerTwo)
@@ -176,30 +127,6 @@ def load(current_level_num):
         
         if levelCompleteOne and levelCompleteTwo:
             #if there are still levels remaining
-<<<<<<< HEAD
-            if current_level_num < len(level_list) - 1:
-                #restarts the players and loads the next level
-                #TODO: make a separate function for this, set players at different locations depending on the level
-                playerOne.rect.x = 20
-                playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerTwo.rect.x = 80
-                playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerOne.speedX = 0
-                playerOne.speedY = 0
-                playerTwo.speedX = 0
-                playerTwo.speedY = 0
-                playerOne.hasKey = False
-                playerTwo.hasKey = False
-                if playerTwo.crouching:
-                    playerTwo.standUp(current_level.platform_list)
-                current_level_num += 1
-                current_level = level_list[current_level_num]
-            
-            #no levels left, return and exit back to the main menu
-            else:
-                current_level_num += 1
-                return current_level_num
-=======
             
             #no levels left, return and exit back to the main menu
             if current_level_num == TOTAL_LEVELS:
@@ -209,7 +136,6 @@ def load(current_level_num):
                 #restarts the players and loads the next level
                 current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                 current_level = Level.Level(current_level_num)
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         
         #draw the platforms
         current_level.draw(screen)
@@ -217,8 +143,6 @@ def load(current_level_num):
         #draw the players
         playerOne.draw(screen)
         playerTwo.draw(screen)
-<<<<<<< HEAD
-=======
         tutorialText = current_level.message
         tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
         screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
@@ -235,7 +159,6 @@ def load(current_level_num):
         if resetClicked:
             current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
             current_level = Level.Level(current_level_num)
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         
         #for 60fps
         #DOESN'T WORK ON MACS
@@ -243,21 +166,15 @@ def load(current_level_num):
         
         pygame.display.update()
     
-<<<<<<< HEAD
-    return current_level_num
-=======
     return 0
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
 
 #Player class
 class Player(pygame.sprite.Sprite):
-    def __init__(self, x, y, playerNum):
+    def __init__(self, x, y, playerNum,color):
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("../resources/player.png").convert()
+        self.color=color
+        self.image = pygame.image.load("../resources/"+self.color+"/player.png").convert()
         self.image.set_colorkey(pygame.Color("white"))
-<<<<<<< HEAD
-        
-=======
         self.leftImages = []
         self.rightImages = []
         self.leftCrouchImages = []
@@ -266,19 +183,18 @@ class Player(pygame.sprite.Sprite):
         self.rightIDX = 0
         self.leftCrouchIDX = 0
         self.rightCrouchIDX = 0
-        self.leftImages.append(pygame.image.load("../resources/knightLeft1.png").convert())
-        self.leftImages.append(pygame.image.load("../resources/knightLeft3.png").convert())
-        self.leftImages.append(pygame.image.load("../resources/knightLeft2.png").convert())
-        self.rightImages.append(pygame.image.load("../resources/knightRight1.png").convert())
-        self.rightImages.append(pygame.image.load("../resources/knightRight3.png").convert())
-        self.rightImages.append(pygame.image.load("../resources/knightRight2.png").convert())
-        self.leftCrouchImages.append(pygame.image.load("../resources/knightLeft1Crouch.png").convert())
-        self.leftCrouchImages.append(pygame.image.load("../resources/knightLeft3Crouch.png").convert())
-        self.leftCrouchImages.append(pygame.image.load("../resources/knightLeft2Crouch.png").convert())
-        self.rightCrouchImages.append(pygame.image.load("../resources/knightRight1Crouch.png").convert())
-        self.rightCrouchImages.append(pygame.image.load("../resources/knightRight3Crouch.png").convert())
-        self.rightCrouchImages.append(pygame.image.load("../resources/knightRight2Crouch.png").convert())
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
+        self.leftImages.append(pygame.image.load("../resources/"+color+"/knightLeft1.png").convert())
+        self.leftImages.append(pygame.image.load("../resources/"+color+"/knightLeft3.png").convert())
+        self.leftImages.append(pygame.image.load("../resources/"+color+"/knightLeft2.png").convert())
+        self.rightImages.append(pygame.image.load("../resources/"+color+"/knightRight1.png").convert())
+        self.rightImages.append(pygame.image.load("../resources/"+color+"/knightRight3.png").convert())
+        self.rightImages.append(pygame.image.load("../resources/"+color+"/knightRight2.png").convert())
+        self.leftCrouchImages.append(pygame.image.load("../resources/"+color+"/knightLeft1Crouch.png").convert())
+        self.leftCrouchImages.append(pygame.image.load("../resources/"+color+"/knightLeft3Crouch.png").convert())
+        self.leftCrouchImages.append(pygame.image.load("../resources/"+color+"/knightLeft2Crouch.png").convert())
+        self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight1Crouch.png").convert())
+        self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
+        self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
         self.width = 40
         self.height = 80
         
@@ -299,31 +215,17 @@ class Player(pygame.sprite.Sprite):
         
         self.disabled = True
         
-<<<<<<< HEAD
-    def update(self, platform_list, otherPlayer):        
-        levelComplete = False
-
-        #calculates new y speed
-        self.calcGrav()
-        
-=======
     def update(self, platform_list, otherPlayer):
         levelComplete = False
         self.image.set_colorkey(pygame.Color("white"))
         #calculates new y speed
         self.calcGrav()
  
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         if self.disabled:
             self.speedX = 0
             if self.onGround == True:
                 self.speedY = 0
             self.disabled = False
-<<<<<<< HEAD
-            
-        self.onGround = False
-=======
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
  
         #moves in x direction
         self.rect.x += self.speedX
@@ -360,11 +262,8 @@ class Player(pygame.sprite.Sprite):
         #moves in y direction    
         self.rect.y += self.speedY
  
-<<<<<<< HEAD
-=======
         self.onGround = False
  
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         #checks for collisions
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         for block in collision_list:
@@ -405,21 +304,14 @@ class Player(pygame.sprite.Sprite):
             elif self.speedY < 0:
                 self.rect.top = otherPlayer.rect.bottom
             self.speedY = 0
-<<<<<<< HEAD
-=======
         self.animate()
                 
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
          
         #returns True if the player has a key and is at the gate, false otherwise
         return levelComplete   
             
     def calcGrav(self):
-<<<<<<< HEAD
-        #initial y speed if they walk off a platform or hit the top of a platform
-=======
         #if they're not on the ground
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         if self.speedY == 0:
             self.speedY = 1
         #acceleration for gravity
@@ -438,7 +330,7 @@ class Player(pygame.sprite.Sprite):
     def standUp(self, platform_list):
         #create new sprite for standing up
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("../resources/player.png").convert()
+        self.image = pygame.image.load("../resources/"+self.color+"/player.png").convert()
         self.image.set_colorkey(pygame.Color("white"))
 
 
@@ -458,14 +350,8 @@ class Player(pygame.sprite.Sprite):
         self.crouching = False
         
         #if standing up makes you collide with another platform, go back to crouching
-<<<<<<< HEAD
-        #TODO: FIX BUG: can't stand up while at the gate
-        collision_list = pygame.sprite.spritecollide(self, platform_list, False)
-        #print (len(collision_list))
-=======
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         for block in collision_list:
             if isinstance(block, Level.Platform):
                 self.crouch()
@@ -475,7 +361,7 @@ class Player(pygame.sprite.Sprite):
     def crouch(self):
         #create new sprite for crouching player
         pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load("../resources/playerCrouch.png").convert()
+        self.image = pygame.image.load("../resources/"+self.color+"/playerCrouch.png").convert()
         self.image.set_colorkey(pygame.Color("white"))
 
 
@@ -495,32 +381,12 @@ class Player(pygame.sprite.Sprite):
         self.crouching = True       
 
     def jump(self):
-<<<<<<< HEAD
-=======
         self.image.set_colorkey(pygame.Color("white"))
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         if self.onGround:
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
  
     def draw(self, screen):
-<<<<<<< HEAD
-        screen.blit(self.image, (self.rect.x, self.rect.y))
-
-    def go_left(self):
-        self.speedX = -6
- 
-    def go_right(self):
-        self.speedX = 6
- 
-    def stop(self):
-        self.speedX = 0        
-    
-        
-        
-if(__name__ == "__main__"):
-    load()
-=======
         self.image.set_colorkey(pygame.Color("white"))
         screen.blit(self.image, (self.rect.x, self.rect.y))
 
@@ -544,11 +410,14 @@ if(__name__ == "__main__"):
                 self.leftIDX = (self.leftIDX+1)%3
                 self.image = self.leftImages[self.leftIDX]
                 self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
+
                 #self.rect = self.image.get_rect()
             else:
                 self.leftCrouchIDX = (self.leftCrouchIDX+1)%3
                 self.image = self.leftCrouchImages[self.leftCrouchIDX]
                 self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
                 #self.rect = self.image.get_rect()
         elif self.speedX > 0 and self.speedY == 0:
             #moving right
@@ -556,32 +425,38 @@ if(__name__ == "__main__"):
                 self.rightIDX = (self.rightIDX+1)%3
                 self.image = self.rightImages[self.rightIDX]
                 self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
                 #self.rect = self.image.get_rect()
             else:
                 self.rightCrouchIDX = (self.rightCrouchIDX+1)%3
                 self.image = self.rightCrouchImages[self.rightCrouchIDX]
                 self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
                 #self.rect = self.image.get_rect()
         elif self.speedX < 0 and self.speedY != 0:
             self.leftIDX = 0
             self.image = self.leftImages[self.leftIDX]
             self.image = pygame.transform.scale(self.image, (self.width, self.height))
+            self.image.set_colorkey(pygame.Color("white"))
         elif self.speedX > 0 and self.speedY != 0:
             self.rightIDX = 0
             self.image = self.rightImages[self.rightIDX]
             self.image = pygame.transform.scale(self.image, (self.width, self.height))
+            self.image.set_colorkey(pygame.Color("white"))
             
 class Button(pygame.sprite.Sprite):
     def __init__(self, filename, location, size):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(filename).convert()
         self.image = pygame.transform.scale(self.image, size)
+        #self.image.set_colorkey(color) 
         self.rect = self.image.get_rect()
         self.rect.x = location[0]
         self.rect.y = location[1]
 
         
     def mouseClick(self, buttonSize, location, file, current_level_num):
+
         mouseLoc = pygame.mouse.get_pos()
 
         #file 1 is to reset the level
@@ -594,11 +469,11 @@ class Button(pygame.sprite.Sprite):
         if file == 2:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
-                    backgroundMusic.fadeout(100)
+                    #backgroundMusic.fadeout(100)
+                    pygame.mixer.music.fadeout(100)
                     import MainMenu
                     MainMenu.menu(current_level_num)
         
         
 if(__name__ == "__main__"):
     load(1)
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e

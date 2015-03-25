@@ -1,92 +1,6 @@
 import pygame, Key, Gate
+from __builtin__ import False
 
-<<<<<<< HEAD
-def generate(levnum):
-    levelMap = 0
-    if levnum == 1:
-        levelMap = [
-    "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                             K                                P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                              K                              GP",
-    "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
-        
-    elif levnum == 2:
-        levelMap = [
-    "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "P                                                              P",
-    "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
-    
-    #return levelMap
-    if (levnum > 0):
-        return Level(levelMap)
-
-=======
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
 class Level(object):
     platform_list = None
             
@@ -123,11 +37,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
-<<<<<<< HEAD
                 "P                             K                                P",
-=======
-                "P                              K                               P",
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
@@ -178,8 +88,6 @@ class Level(object):
                 "P                   K                        K                GP",
                 "PPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPP"]
         
-<<<<<<< HEAD
-=======
         elif levelNum == 3:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
@@ -203,7 +111,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                               K                              P",
-                "P                          PPPPP PPPP                          P",
+                "P                          PPPPPPPPPP                          P",
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
@@ -217,48 +125,9 @@ class Level(object):
                 "P         PPPP                                                 P",
                 "P         PPPP                                                 P",
                 "P         PPPP   K                                            GP",
-                "PPPPPPPPP PPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 4:
-            levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                      P",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                     GP",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
-        
-        elif levelNum == 5:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -297,7 +166,7 @@ class Level(object):
                 "P         PPPP         K                                      GP",
                 "PPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
-        elif levelNum == 6:
+        elif levelNum == 5:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -310,33 +179,32 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
-                "P           PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP      P",
+                "P            PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP      P",
                 "P                              P                               P",
                 "P                              P                               P",
                 "P                              P                               P",
                 "P                              P                               P",
-                "P           PPPPPPPPPPP PPPPPPPP      PPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                              P            P                  P",
-                "P                              P            P                  P",
-                "P                              P            P                  P",
-                "P                              P         K  P                  P",
-                "P      PPPP PPPPPPPPPPPPP      PPPPPPPPPPPPPP                  P",
-                "P      P                                                   PP PP",
+                "P         PPPPPPPPPPPPPPPPPPPPPP      PPPPPPPPPPPPPPPPPPPPPPPPPP",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                              K  P                  P",
+                "P      PPPP      PPPPPPPPPPPPPPPPPPPPPPPPPPPP                  P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
-                "P      PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP        PPPPP  PPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP                                                  P",
+                "P      P                                                       P",
+                "P      PP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP        PPPPPP PPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP                                      P           P",
                 "P                                                              P",
-                "P                                                              P",
+                "P                                                  P           P",
                 "P                  PPPPPPPPP      K                           GP",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPP PPPPPPPP PPPPPPPPPPPPPPP"]
         
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         for row in levelMap:
                 for col in row:
                     if col == "P":
@@ -366,55 +234,16 @@ class Level(object):
             self.button = Button(900, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
-<<<<<<< HEAD
-=======
-
-        elif levelNum == 3:
-            self.wall = Wall(200, 400, 600, 350, 2)
-            self.platform_list.add(self.wall)
             
-            self.button = Button(180, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(540, 200, 420, 100, 10)
+        if levelNum == 3:
+            self.wall = Wall(280, 280, 520, 220, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 600, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(440, 450, 700, 220, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(640, 420, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(720, 220, 420, 100, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(340, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            
         elif levelNum == 4:
-            self.wall = Wall(600, 140, 360, 120, 1)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(360, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(600, 520, 700, 140, 1)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(360, 360, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-        elif levelNum == 5:
             self.wall = Wall(700, 500, 700, 200, 10)
             self.platform_list.add(self.wall)
             
@@ -429,32 +258,18 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-        elif levelNum == 6:
-            self.wall = Wall(1140, 20, 220, -100, 10)
+        elif levelNum == 5:
+            self.wall = Wall(600, 200, 280, -40, 10)
             self.platform_list.add(self.wall)
             
-            self.button = Button(700, 700, self.wall)
+            self.button = Button(580, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(740, 240, 320, -100, 10)
+            self.wall = Wall(660, 660, 700, 160, 10)
             self.platform_list.add(self.wall)
             
-            self.button = Button(820, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(1020, 620, 700, 100, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(460, 320, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(220, 320, 440, 100, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(1220, 440, self.wall)
+            self.button = Button(920, 180, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
@@ -463,17 +278,11 @@ class Level(object):
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"
         elif levelNum == 2:
             self.message = "Stand on the buttons to move the walls!"
-        elif levelNum == 3:
-            self.message = "If you get stuck, you can click on the refresh icon in the corner to restart the level"
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
             
             
     def update(self, playerOne, playerTwo):
         for button in self.button_list:
-<<<<<<< HEAD
-=======
             button.updateColor()            
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
             button.wall.update(button.activated, playerOne, playerTwo)
             button.deactivate()
         
@@ -541,11 +350,7 @@ class Button(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         self.image = pygame.Surface([20,20])
-<<<<<<< HEAD
-        self.image.fill((0, 255, 0))
-=======
         self.image.fill((255, 0, 0))
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
         
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -558,9 +363,6 @@ class Button(pygame.sprite.Sprite):
         self.activated = True
         
     def deactivate(self):
-<<<<<<< HEAD
-        self.activated = False   
-=======
         self.activated = False
     
     def updateColor(self):
@@ -568,4 +370,3 @@ class Button(pygame.sprite.Sprite):
             self.image.fill((0, 255, 0))
         else:
             self.image.fill((255, 0, 0))
->>>>>>> 631219a937320816d42fb5903b27e2c45a050a7e
