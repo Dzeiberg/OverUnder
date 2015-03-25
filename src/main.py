@@ -39,7 +39,7 @@ def load():
     #Creates the array of level objects
     level_list = []
     i = 0
-    while i < 3:
+    while i < 4:
         i += 1
         level_list.append(Level.Level(i))
     
