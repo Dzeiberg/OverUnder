@@ -249,7 +249,7 @@ class Button(pygame.sprite.Sprite):
         pygame.sprite.Sprite.__init__(self)
         
         self.image = pygame.Surface([20,20])
-        self.image.fill((0, 255, 0))
+        self.image.fill((255, 0, 0))
         
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -266,6 +266,6 @@ class Button(pygame.sprite.Sprite):
     
     def updateColor(self):
         if (self.activated):
-            self.image.fill((255, 0, 0))
-        else:
             self.image.fill((0, 255, 0))
+        else:
+            self.image.fill((255, 0, 0))
