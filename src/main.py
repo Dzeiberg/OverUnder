@@ -154,8 +154,8 @@ def load(current_level_num):
             Button.mouseClick(home, homeSize, homeLoc, 2, current_level_num)
         
         if resetClicked:
-                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
-                current_level = Level.Level(current_level_num)
+            current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+            current_level = Level.Level(current_level_num)
         
         #for 60fps
         #DOESN'T WORK ON MACS
