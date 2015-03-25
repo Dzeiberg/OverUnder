@@ -1,5 +1,4 @@
 import pygame, Key, Gate
-from __builtin__ import False
 
 class Level(object):
     platform_list = None
@@ -334,13 +333,8 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-<<<<<<< HEAD
-        elif levelNum == 5:
-            self.wall = Wall(1140, 20, 220, -100, 10)
-=======
         elif levelNum == 6:
-            self.wall = Wall(600, 200, 280, -40, 10)
->>>>>>> origin/dev
+            self.wall = Wall(1140, 20, 220, -100, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(700, 700, self.wall)
