@@ -26,7 +26,7 @@ def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
         
-    if current_level_num == 3:
+    if current_level_num == 4:
         playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
         playerTwo.rect.x = 20
     
