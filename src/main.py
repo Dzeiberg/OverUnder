@@ -3,6 +3,21 @@ import pygame, Key, Gate, Level, sys, EndScreen
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
     
+def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
+    playerOne.rect.x = 20
+    playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
+    playerTwo.rect.x = 80
+    playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
+    playerOne.speedX = 0
+    playerOne.speedY = 0
+    playerTwo.speedX = 0
+    playerTwo.speedY = 0
+    playerOne.hasKey = False
+    playerTwo.hasKey = False
+    if playerTwo.crouching:
+        playerTwo.standUp(current_level.platform_list)
+    
+    return current_level_num + (1 - reset)
 
 #called by the Main Menu
 def load():
@@ -60,20 +75,9 @@ def load():
                         current_level_num += 1
                         EndScreen.load()
                         return current_level_num
-                    playerOne.rect.x = 20
-                    playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-                    playerTwo.rect.x = 80
-                    playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-                    playerOne.speedX = 0
-                    playerOne.speedY = 0
-                    playerTwo.speedX = 0
-                    playerTwo.speedY = 0
-                    playerOne.hasKey = False
-                    playerTwo.hasKey = False
-                    if playerTwo.crouching:
-                        playerTwo.standUp(current_level.platform_list)
-                    current_level_num += 1
+                    current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
+                    
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -123,20 +127,7 @@ def load():
                 return current_level_num
             else:
                 #restarts the players and loads the next level
-                #TODO: make a separate function for this, set players at different locations depending on the level
-                playerOne.rect.x = 20
-                playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerTwo.rect.x = 80
-                playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-                playerOne.speedX = 0
-                playerOne.speedY = 0
-                playerTwo.speedX = 0
-                playerTwo.speedY = 0
-                playerOne.hasKey = False
-                playerTwo.hasKey = False
-                if playerTwo.crouching:
-                    playerTwo.standUp(current_level.platform_list)
-                current_level_num += 1
+                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                 current_level = Level.Level(current_level_num)
         
         #draw the platforms
@@ -159,19 +150,8 @@ def load():
             Button.mouseClick(home, homeSize, homeLoc, 2)
         
         if resetClicked:
-            current_level = Level.Level(current_level_num)
-            playerOne.rect.x = 20
-            playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
-            playerTwo.rect.x = 80
-            playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
-            playerOne.speedX = 0
-            playerOne.speedY = 0
-            playerTwo.speedX = 0
-            playerTwo.speedY = 0
-            playerOne.hasKey = False
-            playerTwo.hasKey = False
-            if playerTwo.crouching:
-                playerTwo.standUp(current_level.platform_list)
+                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+                current_level = Level.Level(current_level_num)
         
         #for 60fps
         #DOESN'T WORK ON MACS
