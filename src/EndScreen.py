@@ -54,6 +54,6 @@ def load():
                     if (mouseLoc[1] > homeLoc[1] and mouseLoc[1] < (homeLoc[1] + homeSize[1])):
                         game = 1
                         import MainMenu
-                        MainMenu.menu()
+                        MainMenu.menu(1)
                         
         pygame.display.update()
