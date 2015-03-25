@@ -9,6 +9,9 @@ backgroundMusic = pygame.mixer.music
 backgroundMusic.load('../resources/bgmusic.mp3')
     
 def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
+    if not reset:
+        current_level_num += 1
+    
     playerOne.rect.x = 20
     playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
     playerTwo.rect.x = 80
@@ -19,10 +22,15 @@ def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     playerTwo.speedY = 0
     playerOne.hasKey = False
     playerTwo.hasKey = False
+    
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
+        
+    if current_level_num == 3:
+        playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
+        playerTwo.rect.x = 20
     
-    return current_level_num + (1 - reset)
+    return current_level_num
 
 #called by the Main Menu
 def load(current_level_num):
@@ -444,7 +452,6 @@ class Button(pygame.sprite.Sprite):
 
         
     def mouseClick(self, buttonSize, location, file, current_level_num):
-
         mouseLoc = pygame.mouse.get_pos()
 
         #file 1 is to reset the level
