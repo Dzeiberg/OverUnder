@@ -36,16 +36,10 @@ def load():
     playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1)
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2)
     
-    #Creates the array of level objects
-    level_list = []
-    i = 0
-    while i < 4:
-        i += 1
-        level_list.append(Level.Level(i))
-    
     #sets this to the current level
-    current_level_num = 0
-    current_level = level_list[current_level_num]
+    TOTAL_LEVELS = 4
+    current_level_num = 1
+    current_level = Level.Level(current_level_num)
     
     
     #main game loop
@@ -62,7 +56,7 @@ def load():
             #checks for various key presses
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_RETURN:
-                    if current_level_num == len(level_list) - 1:
+                    if current_level_num == TOTAL_LEVELS:
                         current_level_num += 1
                         EndScreen.load()
                         return current_level_num
@@ -79,7 +73,7 @@ def load():
                     if playerTwo.crouching:
                         playerTwo.standUp(current_level.platform_list)
                     current_level_num += 1
-                    current_level = level_list[current_level_num]
+                    current_level = Level.Level(current_level_num)
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -121,7 +115,13 @@ def load():
         
         if levelCompleteOne and levelCompleteTwo:
             #if there are still levels remaining
-            if current_level_num < len(level_list) - 1:
+            
+            #no levels left, return and exit back to the main menu
+            if current_level_num == TOTAL_LEVELS:
+                current_level_num += 1
+                EndScreen.load()
+                return current_level_num
+            else:
                 #restarts the players and loads the next level
                 #TODO: make a separate function for this, set players at different locations depending on the level
                 playerOne.rect.x = 20
@@ -137,13 +137,7 @@ def load():
                 if playerTwo.crouching:
                     playerTwo.standUp(current_level.platform_list)
                 current_level_num += 1
-                current_level = level_list[current_level_num]
-            
-            #no levels left, return and exit back to the main menu
-            else:
-                current_level_num += 1
-                EndScreen.load()
-                return current_level_num
+                current_level = Level.Level(current_level_num)
         
         #draw the platforms
         current_level.draw(screen)
@@ -158,10 +152,27 @@ def load():
         #to determine what button was pressed
         screen.blit(reset.image, reset)
         screen.blit(home.image, home)
+        
+        resetClicked = False
         if (game == 2):
-            Button.mouseClick(reset, resetSize, resetLoc, 1)
+            resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1)
             Button.mouseClick(home, homeSize, homeLoc, 2)
-            
+        
+        if resetClicked:
+            current_level = Level.Level(current_level_num)
+            playerOne.rect.x = 20
+            playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
+            playerTwo.rect.x = 80
+            playerTwo.rect.y = SCREEN_HEIGHT - 20 - 80
+            playerOne.speedX = 0
+            playerOne.speedY = 0
+            playerTwo.speedX = 0
+            playerTwo.speedY = 0
+            playerOne.hasKey = False
+            playerTwo.hasKey = False
+            if playerTwo.crouching:
+                playerTwo.standUp(current_level.platform_list)
+        
         #for 60fps
         #DOESN'T WORK ON MACS
         timer.tick(60)
@@ -455,7 +466,7 @@ class Button(pygame.sprite.Sprite):
         if file == 1:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
-                    load()
+                    return True
         #file 1 is to return to main menu
         if file == 2:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
