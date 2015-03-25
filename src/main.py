@@ -254,6 +254,8 @@ class Player(pygame.sprite.Sprite):
         #moves in y direction    
         self.rect.y += self.speedY
  
+        self.onGround = False
+ 
         #checks for collisions
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         for block in collision_list:
