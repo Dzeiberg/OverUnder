@@ -2,6 +2,11 @@ import pygame, Key, Gate, Level, sys, EndScreen
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+
+#background music
+pygame.mixer.init()
+backgroundMusic = pygame.mixer.music
+backgroundMusic.load('../resources/bgmusic.mp3')
     
 def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     playerOne.rect.x = 20
@@ -32,6 +37,9 @@ def load():
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
+    
+    #play background music
+    backgroundMusic.play(-1, 0)
     
     #creating the reset button
     resetLoc = (30, 30)
@@ -449,10 +457,11 @@ class Button(pygame.sprite.Sprite):
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     return True
-        #file 1 is to return to main menu
+        #file 2 is to return to main menu
         if file == 2:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                    backgroundMusic.fadeout(100)
                     import MainMenu
                     MainMenu.menu()
         
