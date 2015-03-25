@@ -125,7 +125,7 @@ class Level(object):
                 "P         PPPP                                                 P",
                 "P         PPPP                                                 P",
                 "P         PPPP   K                                            GP",
-                "PPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPP PPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 4:
             levelMap = [
@@ -296,6 +296,14 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+            self.wall = Wall(720, 220, 420, 100, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(340, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            
         elif levelNum == 4:
             self.wall = Wall(600, 140, 360, 120, 1)
             self.platform_list.add(self.wall)
@@ -304,7 +312,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(600, 600, 700, 200, 1)
+            self.wall = Wall(600, 520, 700, 140, 1)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 360, self.wall)
