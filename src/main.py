@@ -50,12 +50,16 @@ def load(current_level_num):
     
     pygame.display.set_caption("Over Under")
     
+
     TOTAL_LEVELS = 6
     
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     muted = False
+
+    pygame.mixer.music.play(-1, 0)
+ 
     #creating the reset button
     resetLoc = (30, 30)
     resetSize = (45, 45)
@@ -67,9 +71,9 @@ def load(current_level_num):
     home = Button("../resources/home.png", homeLoc, homeSize)
     
     #creating the mute button
-    muteLoc = (164, 30)
+    muteLoc = (144, 30)
     muteSize = (45, 45)
-    mute = Button("../resources/home.png", muteLoc, muteSize)
+    mute = Button("../resources/sound.png", muteLoc, muteSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
