@@ -45,7 +45,7 @@ class Level(object):
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                                                              P",
                 "P                                                              P",
-                "P        SSSSSS                K                              GP",
+                "P                              K                              GP",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 2:
@@ -197,7 +197,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
-                "P         PPPP                                                 P",
+                "P         SSSS                                                 P",
                 "P         PPPP       PPPPP                                     P",
                 "P         PPPP                                                 P",
                 "P         PPPP                                                 P",
@@ -373,6 +373,8 @@ class Level(object):
             self.message = "Stand on the buttons to move the walls!"
         elif levelNum == 3:
             self.message = "Click the refresh button in the corner if you want to restart the level"
+        elif levelNum == 5:
+            self.message = "Careful of the spikes!"
             
     def update(self, playerOne, playerTwo):
         for button in self.button_list:
