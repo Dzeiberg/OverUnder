@@ -56,6 +56,7 @@ def load(current_level_num):
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
+    gateSound = pygame.mixer.Sound('../resources/Unlock.ogg')
     muted = False
  
     #creating the reset button
@@ -149,7 +150,8 @@ def load(current_level_num):
         
         if levelCompleteOne and levelCompleteTwo:
             #if there are still levels remaining
-            
+            gateSound.play()
+            pygame.time.wait(100)
             #no levels left, return and exit back to the main menu
             if current_level_num == TOTAL_LEVELS:
                 pygame.mixer.music.fadeout(100)
@@ -226,6 +228,8 @@ class Player(pygame.sprite.Sprite):
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight1Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
+        self.jumpSound = pygame.mixer.Sound('../resources/Bounce.ogg')
+        self.keySound = pygame.mixer.Sound('../resources/Key.ogg')
         self.width = 40
         self.height = 80
         
@@ -285,6 +289,7 @@ class Player(pygame.sprite.Sprite):
                 #player now has a key
                 self.hasKey = True
                 #PLAYSOUND
+                self.keySound.play()
                 #removes the key from the screen
                 block.rect.x=-50
             #if it's a gate
@@ -433,6 +438,7 @@ class Player(pygame.sprite.Sprite):
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
             #PLAYSOUND
+            self.jumpSound.play()
  
     def draw(self, screen):
         self.image.set_colorkey(pygame.Color("white"))
