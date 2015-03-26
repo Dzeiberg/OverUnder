@@ -41,6 +41,8 @@ def load(current_level_num):
     
     pygame.display.set_caption("Over Under")
     
+    TOTAL_LEVELS = 6
+    
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
@@ -63,12 +65,6 @@ def load(current_level_num):
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
     
     #sets this to the current level
-<<<<<<< HEAD
-    TOTAL_LEVELS = 5
-=======
-    TOTAL_LEVELS = 4
->>>>>>> f770b917fc8842b418c3bca66c70ff512f068e44
-
     current_level = Level.Level(current_level_num)
     
     
