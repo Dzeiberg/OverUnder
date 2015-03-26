@@ -11,6 +11,11 @@ pygame.mixer.music.load('../resources/bgmusic.OGG')
 p1Color="red"
 p2Color="red" 
    
+
+pygame.mixer.init()
+backgroundMusic = pygame.mixer.music
+backgroundMusic.load('../resources/bgmusic.mp3')
+   
 def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     if not reset:
         current_level_num += 1
@@ -50,12 +55,21 @@ def load(current_level_num):
     
     pygame.display.set_caption("Over Under")
     
+
     TOTAL_LEVELS = 6
+
+    #play background music
+    backgroundMusic.play(-1, 0)
+
     
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     muted = False
+
+    backgroundMusic.play(-1, 0)
+    pygame.mixer.music.play(-1, 0)
+ 
     #creating the reset button
     resetLoc = (30, 30)
     resetSize = (45, 45)
@@ -67,9 +81,9 @@ def load(current_level_num):
     home = Button("../resources/home.png", homeLoc, homeSize)
     
     #creating the mute button
-    muteLoc = (164, 30)
+    muteLoc = (144, 30)
     muteSize = (45, 45)
-    mute = Button("../resources/home.png", muteLoc, muteSize)
+    mute = Button("../resources/sound.png", muteLoc, muteSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -514,6 +528,9 @@ class Button(pygame.sprite.Sprite):
                     #backgroundMusic.fadeout(100)
                     if not muted:
                         pygame.mixer.music.fadeout(100)
+                    backgroundMusic.fadeout(100)
+                    pygame.mixer.music.fadeout(100)
+
                     import MainMenu
                     MainMenu.menu(current_level_num)
         
