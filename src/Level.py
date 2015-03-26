@@ -37,7 +37,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
-                "P                              K                               P",
+                "P                             K                                P",
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
@@ -111,7 +111,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                               K                              P",
-                "P                          PPPPP PPPP                          P",
+                "P                          PPPPPPPPPP                          P",
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
@@ -125,48 +125,13 @@ class Level(object):
                 "P         PPPP                                                 P",
                 "P         PPPP                                                 P",
                 "P         PPPP   K                                            GP",
+<<<<<<< HEAD
                 "PPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+=======
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+>>>>>>> f770b917fc8842b418c3bca66c70ff512f068e44
         
         elif levelNum == 4:
-            levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                      P",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                     GP",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
-        
-        elif levelNum == 5:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -205,7 +170,7 @@ class Level(object):
                 "P         PPPP         K                                      GP",
                 "PPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
-        elif levelNum == 6:
+        elif levelNum == 5:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -218,31 +183,31 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
-                "P           PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP      P",
+                "P            PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP      P",
                 "P                              P                               P",
                 "P                              P                               P",
                 "P                              P                               P",
                 "P                              P                               P",
-                "P           PPPPPPPPPPP PPPPPPPP      PPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                              P            P                  P",
-                "P                              P            P                  P",
-                "P                              P            P                  P",
-                "P                              P         K  P                  P",
-                "P      PPPP PPPPPPPPPPPPP      PPPPPPPPPPPPPP                  P",
-                "P      P                                                   PP PP",
+                "P         PPPPPPPPPPPPPPPPPPPPPP      PPPPPPPPPPPPPPPPPPPPPPPPPP",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                                 P                  P",
+                "P         P                              K  P                  P",
+                "P      PPPP      PPPPPPPPPPPPPPPPPPPPPPPPPPPP                  P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
                 "P      P                                                       P",
-                "P      PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP        PPPPP  PPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP                                                  P",
+                "P      P                                                       P",
+                "P      PP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP        PPPPPP PPPPPPPPPPPPPPPPPPPPPPP            P",
+                "P      PPPPPP                                      P           P",
                 "P                                                              P",
-                "P                                                              P",
+                "P                                                  P           P",
                 "P                  PPPPPPPPP      K                           GP",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPP PPPPPPPP PPPPPPPPPPPPPPP"]
         
         for row in levelMap:
                 for col in row:
@@ -273,22 +238,16 @@ class Level(object):
             self.button = Button(900, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
-
-        elif levelNum == 3:
-            self.wall = Wall(200, 400, 600, 350, 2)
-            self.platform_list.add(self.wall)
             
-            self.button = Button(180, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(540, 200, 420, 100, 10)
+        if levelNum == 3:
+            self.wall = Wall(280, 280, 520, 220, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 600, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+<<<<<<< HEAD
             self.wall = Wall(440, 450, 700, 220, 10)
             self.platform_list.add(self.wall)
             
@@ -312,6 +271,9 @@ class Level(object):
             self.button_list.append(self.button)
             
         elif levelNum == 5:
+=======
+        elif levelNum == 4:
+>>>>>>> f770b917fc8842b418c3bca66c70ff512f068e44
             self.wall = Wall(700, 500, 700, 200, 10)
             self.platform_list.add(self.wall)
             
@@ -326,6 +288,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+<<<<<<< HEAD
 <<<<<<< HEAD
         elif levelNum == 5:
             self.wall = Wall(1140, 20, 220, -100, 10)
@@ -347,16 +310,20 @@ class Level(object):
             self.button_list.append(self.button)
             
             self.wall = Wall(1020, 620, 700, 100, 10)
+=======
+        elif levelNum == 5:
+            self.wall = Wall(600, 200, 280, -40, 10)
+>>>>>>> f770b917fc8842b418c3bca66c70ff512f068e44
             self.platform_list.add(self.wall)
             
-            self.button = Button(460, 320, self.wall)
+            self.button = Button(580, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(220, 320, 440, 100, 10)
+            self.wall = Wall(660, 660, 700, 160, 10)
             self.platform_list.add(self.wall)
             
-            self.button = Button(1220, 440, self.wall)
+            self.button = Button(920, 180, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
@@ -365,8 +332,6 @@ class Level(object):
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"
         elif levelNum == 2:
             self.message = "Stand on the buttons to move the walls!"
-        elif levelNum == 3:
-            self.message = "If you get stuck, you can click on the refresh icon in the corner to restart the level"
             
             
     def update(self, playerOne, playerTwo):
