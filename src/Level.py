@@ -46,7 +46,7 @@ class Level(object):
                 "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
                 "P                                                              P",
                 "P                                                              P",
-                "P                              K                              GP",
+                "P        SSSSSS                K                              GP",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 2:
@@ -216,6 +216,9 @@ class Level(object):
                     elif col =="G":
                         g = Gate.gate((x,y))
                         self.platform_list.add(g)
+                    elif col =="S":
+                        s=Spike(x,y,20,20)
+                        self.platform_list.add(s)
                     x += 20
                 y += 20
                 x = 0
@@ -370,3 +373,14 @@ class Button(pygame.sprite.Sprite):
             self.image.fill((0, 255, 0))
         else:
             self.image.fill((255, 0, 0))
+class Spike(Platform):
+    def __init__(self,x,y,width,height):
+        Platform.__init__(self,x,y)
+        self.width=width
+        self.height=height
+        self.image = pygame.image.load("../resources/spike.png").convert()
+        self.image = pygame.transform.scale(self.image, (self.width, self.height))
+        self.image.set_colorkey(pygame.Color("white"))
+        self.rect = self.image.get_rect()
+        self.rect.x=x
+        self.rect.y=y

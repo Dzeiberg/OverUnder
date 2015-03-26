@@ -120,8 +120,8 @@ def load(current_level_num):
                 game = 2
  
         #updates the players and sees if they have the conditions to finish the level
-        levelCompleteOne = playerOne.update(current_level.platform_list, playerTwo)
-        levelCompleteTwo = playerTwo.update(current_level.platform_list, playerOne)
+        [levelCompleteOne,dead1] = playerOne.update(current_level.platform_list, playerTwo)
+        [levelCompleteTwo,dead2] = playerTwo.update(current_level.platform_list, playerOne)
         
         current_level.update(playerOne, playerTwo)
         
@@ -136,7 +136,9 @@ def load(current_level_num):
                 #restarts the players and loads the next level
                 current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                 current_level = Level.Level(current_level_num)
-        
+        elif dead1 or dead2:
+            current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+            current_level = Level.Level(current_level_num)
         #draw the platforms
         current_level.draw(screen)
         
@@ -217,6 +219,7 @@ class Player(pygame.sprite.Sprite):
         
     def update(self, platform_list, otherPlayer):
         levelComplete = False
+        dead = False
         self.image.set_colorkey(pygame.Color("white"))
         #calculates new y speed
         self.calcGrav()
@@ -233,8 +236,15 @@ class Player(pygame.sprite.Sprite):
         #checks if the player collides with anything
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         for block in collision_list:
+            if isinstance(block,Level.Spike):
+                if self.speedX > 0:
+                    self.rect.right = block.rect.left
+                #if moving right, place the player to the left of the platform
+                elif self.speedX < 0:
+                    self.rect.left = block.rect.right 
+                dead = True
             #if it's a platform
-            if isinstance(block, Level.Platform):
+            elif isinstance(block, Level.Platform):
                 #if moving left, place the player to the right of the platform
                 if self.speedX > 0:
                     self.rect.right = block.rect.left
@@ -251,7 +261,6 @@ class Player(pygame.sprite.Sprite):
             elif isinstance(block, Gate.gate) and self.hasKey:
                 #if they have a key, levelComplete is true and is return later
                 levelComplete = True
-                
         #checks for collision with the other player, similar to a platform
         if pygame.sprite.collide_rect(self, otherPlayer):
             if self.speedX > 0:
@@ -275,11 +284,18 @@ class Player(pygame.sprite.Sprite):
             #just like collisions with x direction
             if isinstance(block, Level.Platform):
                 #If the player is under a wall, stop the player's and the wall's movement
+
                 if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
                     block.rect.bottom = self.rect.top + 1
                     block.disabled = True
                     self.disabled = True
-                    
+                elif isinstance(block,Level.Spike):
+                    if self.speedY > 0:
+                        self.rect.bottom = block.rect.top
+                    #if moving right, place the player to the left of the platform
+                    elif self.speedX < 0:
+                        self.rect.bottom = block.rect.top 
+                    dead = True   
                 else:
                     if self.speedY > 0:
                         self.rect.bottom = block.rect.top
@@ -308,7 +324,7 @@ class Player(pygame.sprite.Sprite):
                 
          
         #returns True if the player has a key and is at the gate, false otherwise
-        return levelComplete   
+        return [levelComplete,dead]   
             
     def calcGrav(self):
         #if they're not on the ground
