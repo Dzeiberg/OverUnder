@@ -33,7 +33,7 @@ def load():
     black = 0, 0, 0
 
     screen = pygame.display.set_mode(screenSize)
-    
+
     titleLoc = (0, 0)
     title = Image("../resources/optionsScreen.png", titleLoc, screenSize)
     
@@ -42,18 +42,18 @@ def load():
     backButton = Image("../resources/back.png", backLoc, backSize)
 
     squareSize = (75,75)
-    redLoc = (350,330)
-    orangeLoc = (440,330)
-    yellowLoc = (525,330)
-    greenLoc = (610,330)
-    blueLoc = (695,330)
-    purpleLoc = (780,330)
-    redLoc2 = (350,475)
-    orangeLoc2 = (440,475)
-    yellowLoc2 = (525,475)
-    greenLoc2 = (610,475)
-    blueLoc2 = (695,475)
-    purpleLoc2 = (780,475)
+    redLoc = (350,290)
+    orangeLoc = (440,290)
+    yellowLoc = (525,290)
+    greenLoc = (610,290)
+    blueLoc = (695,290)
+    purpleLoc = (780,290)
+    redLoc2 = (350,460)
+    orangeLoc2 = (440,460)
+    yellowLoc2 = (525,460)
+    greenLoc2 = (610,460)
+    blueLoc2 = (695,460)
+    purpleLoc2 = (780,460)
     red1 = Image("../resources/redSquare.png",redLoc,squareSize)
     orange1 = Image("../resources/orangeSquare.png",orangeLoc,squareSize)
     yellow1 = Image("../resources/yellowSquare.png",yellowLoc,squareSize)
