@@ -1,4 +1,4 @@
-import pygame, Key, Gate, Level, sys, EndScreen, MainMenu
+import pygame, Key, Gate, Level, sys, EndScreen
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -175,15 +175,20 @@ def load(current_level_num):
         screen.blit(home.image, home)
         screen.blit(mute.image, mute)
         
+        homeClicked = False
         resetClicked = False
         if (game == 2):
-            resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1, current_level_num, muted)
-            Button.mouseClick(home, homeSize, homeLoc, 2, current_level_num, muted)
-            muted = Button.mouseClick(mute, muteSize, muteLoc, 3, current_level_num, muted)
+            resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1, muted)
+            homeClicked = Button.mouseClick(home, homeSize, homeLoc, 2, muted)
+            muted = Button.mouseClick(mute, muteSize, muteLoc, 3, muted)
         
         if resetClicked:
             current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
             current_level = Level.Level(current_level_num)
+            
+        if homeClicked:
+            print current_level_num
+            return current_level_num
         
         #for 60fps
         #DOESN'T WORK ON MACS
@@ -497,7 +502,7 @@ class Button(pygame.sprite.Sprite):
         self.rect.y = location[1]
 
         
-    def mouseClick(self, buttonSize, location, file, current_level_num, muted):
+    def mouseClick(self, buttonSize, location, file, muted):
 
         mouseLoc = pygame.mouse.get_pos()
 
@@ -514,7 +519,7 @@ class Button(pygame.sprite.Sprite):
                     #backgroundMusic.fadeout(100)
                     if not muted:
                         pygame.mixer.music.fadeout(100)
-                    MainMenu.menu(current_level_num)
+                    return True
         
         #file 3 is to mute/play sounds
         elif file == 3:

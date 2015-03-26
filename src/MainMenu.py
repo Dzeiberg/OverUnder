@@ -32,14 +32,14 @@ class Image(pygame.sprite.Sprite):
                 #for the resume button
                 if(file == 2):
                     #do something to resume to whatever level
-                    main.load(level_num)
+                    level_num = main.load(level_num)
                 elif(file == 3):
-                    main.load(1)
+                    level_num = (main.load(1))
                 else:
                     file.load()
-                
                     
-
+        return level_num
+    
 #bg_music = pygame.mixer.music
 #bg_music.load('FuelShip.wav')
 #bg_music.play(-1, 0.0)
@@ -96,10 +96,10 @@ def menu(level_num):
                
     #used to go to other screens
     if (game == 2):
-        Image.mouseClick(start, startSize, startLoc, 3, current_level_num) 
+        current_level_num = Image.mouseClick(start, startSize, startLoc, 3, current_level_num) 
         Image.mouseClick(options, optionsSize, optionsLoc, Options, current_level_num) 
         Image.mouseClick(instructions, instructionsSize, instructionsLoc, Instructions, current_level_num)
-        Image.mouseClick(resume, resumeSize, resumeLoc, 2 ,current_level_num) 
+        current_level_num = Image.mouseClick(resume, resumeSize, resumeLoc, 2, current_level_num) 
         menu(current_level_num)
         
 menu(1)
