@@ -1,5 +1,4 @@
 import pygame, Key, Gate
-from __builtin__ import False
 
 class Level(object):
     platform_list = None
@@ -111,7 +110,7 @@ class Level(object):
                 "P                                                              P",
                 "P                                                              P",
                 "P                               K                              P",
-                "P                          PPPPPPPPPP                          P",
+                "P                          PPPPP PPPP                          P",
                 "P                                                              P",
                 "P                                                              P",
                 "P                                                              P",
@@ -125,9 +124,48 @@ class Level(object):
                 "P         PPPP                                                 P",
                 "P         PPPP                                                 P",
                 "P         PPPP   K                                            GP",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPP PPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 4:
+            levelMap = [
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                       K                      P",
+                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                     P        P",
+                "P                                                              P",
+                "P                                                              P",
+                "P                                       K                     GP",
+                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+        
+        elif levelNum == 5:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -166,7 +204,7 @@ class Level(object):
                 "P         PPPP         K                                      GP",
                 "PPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
-        elif levelNum == 5:
+        elif levelNum == 6:
             levelMap = [
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
                 "P                                                              P",
@@ -238,15 +276,52 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-        if levelNum == 3:
-            self.wall = Wall(280, 280, 520, 220, 10)
+        elif levelNum == 3:
+            self.wall = Wall(200, 400, 600, 350, 2)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(180, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(540, 200, 420, 100, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 600, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+            self.wall = Wall(440, 450, 700, 220, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(640, 420, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(720, 220, 420, 100, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(340, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            
         elif levelNum == 4:
+            self.wall = Wall(600, 140, 360, 120, 1)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(360, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(600, 520, 700, 140, 1)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(360, 360, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+        elif levelNum == 5:
             self.wall = Wall(700, 500, 700, 200, 10)
             self.platform_list.add(self.wall)
             
@@ -261,7 +336,22 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-        elif levelNum == 5:
+        elif levelNum == 6:
+            self.wall = Wall(600, 200, 280, -40, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(700, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(740, 240, 320, -100, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(820, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)           
+            self.wall = Wall(1020, 620, 700, 100, 10)
+
             self.wall = Wall(600, 200, 280, -40, 10)
             self.platform_list.add(self.wall)
             
@@ -281,7 +371,8 @@ class Level(object):
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"
         elif levelNum == 2:
             self.message = "Stand on the buttons to move the walls!"
-            
+        elif levelNum == 3:
+            self.message = "Click the refresh button in the corner if you want to restart the level"
             
     def update(self, playerOne, playerTwo):
         for button in self.button_list:
