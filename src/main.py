@@ -482,15 +482,27 @@ class Player(pygame.sprite.Sprite):
                 self.image.set_colorkey(pygame.Color("white"))
                 #self.rect = self.image.get_rect()
         elif self.speedX < 0 and self.speedY != 0:
-            self.leftIDX = 0
-            self.image = self.leftImages[self.leftIDX]
-            self.image = pygame.transform.scale(self.image, (self.width, self.height))
-            self.image.set_colorkey(pygame.Color("white"))
+            if not self.crouching:
+                self.leftIDX = 0
+                self.image = self.leftImages[self.leftIDX]
+                self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
+            elif self.crouching:
+                self.leftCrouchIDX = 0
+                self.image = self.leftCrouchImages[self.leftCrouchIDX]
+                self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
         elif self.speedX > 0 and self.speedY != 0:
-            self.rightIDX = 0
-            self.image = self.rightImages[self.rightIDX]
-            self.image = pygame.transform.scale(self.image, (self.width, self.height))
-            self.image.set_colorkey(pygame.Color("white"))
+            if not self.crouching:
+                self.rightIDX = 0
+                self.image = self.rightImages[self.rightIDX]
+                self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
+            elif self.crouching:
+                self.rightCrouchIDX = 0
+                self.image = self.rightCrouchImages[self.rightCrouchIDX]
+                self.image = pygame.transform.scale(self.image, (self.width, self.height))
+                self.image.set_colorkey(pygame.Color("white"))
             
 class Button(pygame.sprite.Sprite):
     def __init__(self, filename, location, size):
