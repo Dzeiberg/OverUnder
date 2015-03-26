@@ -7,7 +7,10 @@ SCREEN_HEIGHT = 720
 pygame.mixer.init()
 #backgroundMusic = pygame.mixer.music
 #backgroundMusic.load('../resources/bgmusic.mp3')
-pygame.mixer.music.load('../resources/bgmusic.OGG')
+
+#This song is was taken from the open source website www.tannerhelland.com
+#and is credited to Tanner Helland.
+pygame.mixer.music.load('../resources/Surreptitious.OGG')
 p1Color="red"
 p2Color="red" 
    
@@ -143,15 +146,17 @@ def load(current_level_num):
                 game = 2
  
         #updates the players and sees if they have the conditions to finish the level
-        [levelCompleteOne,dead1] = playerOne.update(current_level.platform_list, playerTwo)
-        [levelCompleteTwo,dead2] = playerTwo.update(current_level.platform_list, playerOne)
+        [levelCompleteOne,dead1] = playerOne.update(current_level.platform_list, playerTwo, muted)
+        [levelCompleteTwo,dead2] = playerTwo.update(current_level.platform_list, playerOne, muted)
         
         current_level.update(playerOne, playerTwo)
         
         if levelCompleteOne and levelCompleteTwo:
+
+            if not muted:
+                gateSound.play()
+                pygame.time.wait(100)
             #if there are still levels remaining
-            gateSound.play()
-            pygame.time.wait(100)
             #no levels left, return and exit back to the main menu
             if current_level_num == TOTAL_LEVELS:
                 pygame.mixer.music.fadeout(100)
@@ -228,8 +233,8 @@ class Player(pygame.sprite.Sprite):
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight1Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
-        self.jumpSound = pygame.mixer.Sound('../resources/Bounce.ogg')
-        self.keySound = pygame.mixer.Sound('../resources/Key.ogg')
+        self.painSound = pygame.mixer.Sound('../resources/Spikes.ogg')
+        self.keySound = pygame.mixer.Sound('../resources/Tone.ogg')
         self.width = 40
         self.height = 80
         
@@ -250,7 +255,7 @@ class Player(pygame.sprite.Sprite):
         
         self.disabled = True
         
-    def update(self, platform_list, otherPlayer):
+    def update(self, platform_list, otherPlayer, noSound):
         levelComplete = False
         dead = False
         self.image.set_colorkey(pygame.Color("white"))
@@ -275,6 +280,8 @@ class Player(pygame.sprite.Sprite):
                 #if moving right, place the player to the left of the platform
                 elif self.speedX < 0:
                     self.rect.left = block.rect.right 
+                if not noSound:
+                    self.painSound.play()
                 dead = True
             #if it's a platform
             elif isinstance(block, Level.Platform):
@@ -289,7 +296,8 @@ class Player(pygame.sprite.Sprite):
                 #player now has a key
                 self.hasKey = True
                 #PLAYSOUND
-                self.keySound.play()
+                if not noSound:
+                    self.keySound.play(0, 0, 600)
                 #removes the key from the screen
                 block.rect.x=-50
             #if it's a gate
@@ -331,6 +339,8 @@ class Player(pygame.sprite.Sprite):
                     #if moving right, place the player to the left of the platform
                     elif self.speedX < 0:
                         self.rect.bottom = block.rect.top 
+                    if not noSound:
+                        self.painSound.play()
                     dead = True   
                 else:
                     if self.speedY > 0:
@@ -438,7 +448,7 @@ class Player(pygame.sprite.Sprite):
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
             #PLAYSOUND
-            self.jumpSound.play()
+            #self.jumpSound.play()
  
     def draw(self, screen):
         self.image.set_colorkey(pygame.Color("white"))
