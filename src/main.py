@@ -9,8 +9,12 @@ pygame.mixer.init()
 #backgroundMusic.load('../resources/bgmusic.mp3')
 pygame.mixer.music.load('../resources/bgmusic.OGG')
 p1Color="red"
-p2Color="red"    
+p2Color="red"
+    
 def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
+    if not reset:
+        current_level_num += 1
+    
     playerOne.rect.x = 20
     playerOne.rect.y = SCREEN_HEIGHT - 20 - 80
     playerTwo.rect.x = 80
@@ -21,10 +25,15 @@ def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     playerTwo.speedY = 0
     playerOne.hasKey = False
     playerTwo.hasKey = False
+    
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
+        
+    if current_level_num == 4:
+        playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
+        playerTwo.rect.x = 20
     
-    return current_level_num + (1 - reset)
+    return current_level_num
 
 #called by the Main Menu
 def load(current_level_num):
