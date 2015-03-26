@@ -91,6 +91,7 @@ def load(current_level_num):
                 if event.key == pygame.K_RETURN:
                     if current_level_num == TOTAL_LEVELS:
                         EndScreen.load()
+                        pygame.mixer.music.fadeout(100)
                         return current_level_num
                     current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
@@ -140,6 +141,7 @@ def load(current_level_num):
             #no levels left, return and exit back to the main menu
             if current_level_num == TOTAL_LEVELS:
                 EndScreen.load()
+                pygame.mixer.music.fadeout(100)
                 return 0
             else:
                 #restarts the players and loads the next level
