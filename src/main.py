@@ -104,7 +104,7 @@ def load(current_level_num):
                     if current_level_num == TOTAL_LEVELS:
                         pygame.mixer.music.fadeout(100)
                         EndScreen.load()
-                        return current_level_num
+                        return 0
                     current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
                     
