@@ -211,18 +211,18 @@ class Level(object):
                 "P                              P                   P           P",
                 "P                              P                   P           P",
                 "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P  K        P",
-                "P           PPPPPPPPPPPPP      P     PPPPPPPP      PPPPPP      P",
-                "P                       P      P            P                  P",
-                "P                       P      P            P                  P",
-                "P                       P      P            P                  P",
-                "P                       P      P            P                  P",
-                "P           PPPPPPPPPPP P      PPPPPP       PPPPPPPPPPPPPPPPPPPP",
+                "P                              P       PPPPPP      P           P",
+                "P                              P            P      P           P",
+                "P                              P            P      P           P",
+                "P                              P            P      P           P",
+                "P                              P            P      P           P",
+                "P                              P            P      P K         P",
+                "P             PPPPPPPPPPP      P            P      PPPPP       P",
+                "P                       P      P            PPP                P",
+                "P                       P      P            PPP                P",
+                "P                       P      P            PPP                P",
+                "P                       P      P            PPP                P",
+                "P            PPPPPPPPPP P      PPPPP        PPPPPPPPPPPPPPPPPPPP",
                 "P                       P                   P                  P",
                 "P                       P                   P                  P",
                 "P                       P                   P                  P",
@@ -278,7 +278,7 @@ class Level(object):
             self.button_list.append(self.button)
             
         elif levelNum == 3:
-            self.wall = Wall(200, 400, 600, 350, 2)
+            self.wall = Wall(200, 400, 600, 300, 2)
             self.platform_list.add(self.wall)
             
             self.button = Button(180, 700, self.wall)
@@ -338,14 +338,14 @@ class Level(object):
             self.button_list.append(self.button)
             
         elif levelNum == 6:
-            self.wall = Wall(1140, 220, 320, 140, 10)
+            self.wall = Wall(1140, 200, 280, 100, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(700, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(740, 320, 420, 80, 10)
+            self.wall = Wall(740, 320, 380, 40, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(820, 700, self.wall)
@@ -359,7 +359,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(220, 320, 440, 100, 10)
+            self.wall = Wall(220, 300, 440, 100, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(1220, 440, self.wall)

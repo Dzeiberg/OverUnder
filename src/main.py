@@ -55,6 +55,7 @@ def load(current_level_num):
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
+    muted = False
     #creating the reset button
     resetLoc = (30, 30)
     resetSize = (45, 45)
@@ -64,6 +65,11 @@ def load(current_level_num):
     homeLoc = (87, 30)
     homeSize = (45, 45)
     home = Button("../resources/home.png", homeLoc, homeSize)
+    
+    #creating the mute button
+    muteLoc = (164, 30)
+    muteSize = (45, 45)
+    mute = Button("../resources/home.png", muteLoc, muteSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -163,11 +169,13 @@ def load(current_level_num):
         #to determine what button was pressed
         screen.blit(reset.image, reset)
         screen.blit(home.image, home)
+        screen.blit(mute.image, mute)
         
         resetClicked = False
         if (game == 2):
-            resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1, current_level_num)
-            Button.mouseClick(home, homeSize, homeLoc, 2, current_level_num)
+            resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1, current_level_num, muted)
+            Button.mouseClick(home, homeSize, homeLoc, 2, current_level_num, muted)
+            muted = Button.mouseClick(mute, muteSize, muteLoc, 3, current_level_num, muted)
         
         if resetClicked:
             current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
@@ -266,11 +274,13 @@ class Player(pygame.sprite.Sprite):
             elif isinstance(block,Key.key) and not self.hasKey:
                 #player now has a key
                 self.hasKey = True
+                #PLAYSOUND
                 #removes the key from the screen
                 block.rect.x=-50
             #if it's a gate
             elif isinstance(block, Gate.gate) and self.hasKey:
                 #if they have a key, levelComplete is true and is return later
+                #PLAYSOUND
                 levelComplete = True
         #checks for collision with the other player, similar to a platform
         if pygame.sprite.collide_rect(self, otherPlayer):
@@ -412,6 +422,7 @@ class Player(pygame.sprite.Sprite):
         if self.onGround:
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
+            #PLAYSOUND
  
     def draw(self, screen):
         self.image.set_colorkey(pygame.Color("white"))
@@ -482,7 +493,7 @@ class Button(pygame.sprite.Sprite):
         self.rect.y = location[1]
 
         
-    def mouseClick(self, buttonSize, location, file, current_level_num):
+    def mouseClick(self, buttonSize, location, file, current_level_num, muted):
 
         mouseLoc = pygame.mouse.get_pos()
 
@@ -501,6 +512,17 @@ class Button(pygame.sprite.Sprite):
                     import MainMenu
                     MainMenu.menu(current_level_num)
         
+        #file 3 is to mute/play sounds
+        if file == 3:
+            if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
+                if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
+                    if muted:
+                        pygame.mixer.music.pause()
+                        return False
+                    else:
+                        pygame.mixer.music.unpause()
+                        return True
+            
         
 if(__name__ == "__main__"):
     load(1)
