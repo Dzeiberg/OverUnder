@@ -512,7 +512,8 @@ class Button(pygame.sprite.Sprite):
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     #backgroundMusic.fadeout(100)
-                    pygame.mixer.music.fadeout(100)
+                    if not muted:
+                        pygame.mixer.music.fadeout(100)
                     import MainMenu
                     MainMenu.menu(current_level_num)
         
@@ -521,10 +522,10 @@ class Button(pygame.sprite.Sprite):
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     if muted:
-                        pygame.mixer.music.pause()
+                        pygame.mixer.music.unpause()
                         return False
                     else:
-                        pygame.mixer.music.unpause()
+                        pygame.mixer.music.pause()
                         return True
             
         
