@@ -57,8 +57,6 @@ def load(current_level_num):
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     muted = False
-
-    pygame.mixer.music.play(-1, 0)
  
     #creating the reset button
     resetLoc = (30, 30)
@@ -191,7 +189,6 @@ def load(current_level_num):
             current_level = Level.Level(current_level_num)
             
         if homeClicked:
-            print current_level_num
             return current_level_num
         
         #for 60fps
