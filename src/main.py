@@ -1,4 +1,4 @@
-import pygame, Key, Gate, Level, sys, EndScreen
+import pygame, Key, Gate, Level, sys, EndScreen, MainMenu
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -522,20 +522,22 @@ class Button(pygame.sprite.Sprite):
                     return True
 
         #file 2 is to return to main menu
-        if file == 2:
+        elif file == 2:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     #backgroundMusic.fadeout(100)
                     if not muted:
                         pygame.mixer.music.fadeout(100)
+
                     backgroundMusic.fadeout(100)
                     pygame.mixer.music.fadeout(100)
 
                     import MainMenu
+
                     MainMenu.menu(current_level_num)
         
         #file 3 is to mute/play sounds
-        if file == 3:
+        elif file == 3:
             if (mouseLoc[0] > location[0] and mouseLoc[0] < (location[0] + buttonSize[0])):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     if muted:
