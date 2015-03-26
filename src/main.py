@@ -82,6 +82,10 @@ def load(current_level_num):
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
+    if current_level_num != 1:
+        current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+        current_level = Level.Level(current_level_num)
+    
     
     #main game loop
     while True:
