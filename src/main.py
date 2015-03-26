@@ -496,7 +496,8 @@ class Button(pygame.sprite.Sprite):
     def __init__(self, filename, location, size):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(filename).convert()
-        self.image = pygame.transform.scale(self.image, size)
+        self.size = size
+        self.image = pygame.transform.scale(self.image, self.size)
         #self.image.set_colorkey(color) 
         self.rect = self.image.get_rect()
         self.rect.x = location[0]
@@ -528,9 +529,13 @@ class Button(pygame.sprite.Sprite):
                 if (mouseLoc[1] > location[1] and mouseLoc[1] < (location[1] + buttonSize[1])):
                     if muted:
                         pygame.mixer.music.unpause()
+                        self.image = pygame.image.load("../resources/sound.png").convert()
+                        self.image = pygame.transform.scale(self.image, self.size)
                         return False
                     else:
                         pygame.mixer.music.pause()
+                        self.image = pygame.image.load("../resources/soundMute.png").convert()
+                        self.image = pygame.transform.scale(self.image, self.size)
                         return True
             
         
