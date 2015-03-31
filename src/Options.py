@@ -23,6 +23,17 @@ class Image(pygame.sprite.Sprite):
             if (mouseLoc[1] > self.location[1] and mouseLoc[1] < (self.location[1] + self.size[1])):
                 return True
         return False
+    
+class Box(pygame.sprite.Sprite):
+    def __init__(self, color, filename, location):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(filename).convert()
+        self.image.set_colorkey(color) 
+        self.rect = self.image.get_rect()
+        self.rect.x = location[0]
+        self.rect.y = location[1]
+        self.location = location
+       
 
 def load():
     
@@ -40,6 +51,7 @@ def load():
     backLoc = (50, 600)
     backSize = (120, 75)
     backButton = Image("../resources/back.png", backLoc, backSize)
+
 
     squareSize = (75,75)
     redLoc = (350,290)
@@ -66,10 +78,24 @@ def load():
     green2 = Image("../resources/greenSquare.png",greenLoc2,squareSize)
     blue2 = Image("../resources/blueSquare.png",blueLoc2,squareSize)
     purple2 = Image("../resources/purpleSquare.png",purpleLoc2,squareSize)
-
+        
+    BoxRed1 = Box(white,"../resources/highlightedBox.png", redLoc)
+    BoxOrange1 = Box(white,"../resources/highlightedBox.png", orangeLoc)
+    BoxYellow1 = Box(white,"../resources/highlightedBox.png", yellowLoc)
+    BoxGreen1 = Box(white,"../resources/highlightedBox.png", greenLoc)
+    BoxBlue1 = Box(white,"../resources/highlightedBox.png", blueLoc)
+    BoxPurple1 = Box(white,"../resources/highlightedBox.png", purpleLoc)
+    BoxRed2 = Box(white,"../resources/highlightedBox.png", redLoc2)
+    BoxOrange2 = Box(white,"../resources/highlightedBox.png", orangeLoc2)
+    BoxYellow2 = Box(white,"../resources/highlightedBox.png", yellowLoc2)
+    BoxGreen2 = Box(white,"../resources/highlightedBox.png", greenLoc2)
+    BoxBlue2 = Box(white,"../resources/highlightedBox.png", blueLoc2)
+    BoxPurple2 = Box(white,"../resources/highlightedBox.png", purpleLoc2)
     
     global game
     game = 0
+    boxPos = 0
+    boxPos2 = 0
     while game == 0 :
         
         screen.fill(white)
@@ -88,6 +114,33 @@ def load():
         screen.blit(green2.image,green2)
         screen.blit(blue2.image,blue2)
         screen.blit(purple2.image,purple2)
+        
+        if boxPos == 0:
+            screen.blit(BoxRed1.image, BoxRed1)
+        elif boxPos == 1:
+            screen.blit(BoxOrange1.image, BoxOrange1)
+        elif boxPos == 2:
+            screen.blit(BoxYellow1.image, BoxYellow1)
+        elif boxPos == 3:
+            screen.blit(BoxGreen1.image, BoxGreen1)
+        elif boxPos == 4:
+            screen.blit(BoxBlue1.image, BoxBlue1)
+        elif boxPos == 5:
+            screen.blit(BoxPurple1.image, BoxPurple1)
+        
+        if boxPos2 == 0:
+            screen.blit(BoxRed2.image, BoxRed2)
+        elif boxPos2 == 1:
+            screen.blit(BoxOrange2.image, BoxOrange2)
+        elif boxPos2 == 2:
+            screen.blit(BoxYellow2.image, BoxYellow2)
+        elif boxPos2 == 3:
+            screen.blit(BoxGreen2.image, BoxGreen2)
+        elif boxPos2 == 4:
+            screen.blit(BoxBlue2.image, BoxBlue2)
+        elif boxPos2 == 5:
+            screen.blit(BoxPurple2.image, BoxPurple2)
+        
 
         
         for event in pygame.event.get():
@@ -102,28 +155,40 @@ def load():
                         game = 1
                 if red1.mouseClick():
                     main.p1Color="red"
+                    boxPos = 0
                 elif orange1.mouseClick():
                     main.p1Color="orange"
+                    boxPos = 1
                 elif yellow1.mouseClick():
                     main.p1Color="yellow"
+                    boxPos = 2
                 elif green1.mouseClick():
                     main.p1Color="green"
+                    boxPos = 3
                 elif blue1.mouseClick():
                     main.p1Color="blue"
+                    boxPos = 4
                 elif purple1.mouseClick():
                     main.p1Color="purple"
+                    boxPos = 5
                 elif red2.mouseClick():
                     main.p2Color="red"
+                    boxPos2 = 0
                 elif orange2.mouseClick():
                     main.p2Color="orange"
+                    boxPos2 = 1
                 elif yellow2.mouseClick():
                     main.p2Color="yellow"
+                    boxPos2 = 2
                 elif green2.mouseClick():
                     main.p2Color="green"
+                    boxPos2 = 3
                 elif blue2.mouseClick():
                     main.p2Color="blue"
+                    boxPos2 = 4
                 elif purple2.mouseClick():
-                    main.p2Color="purple" 
+                    main.p2Color="purple"
+                    boxPos2 = 5 
                         
         
         pygame.display.update()     
