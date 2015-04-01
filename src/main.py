@@ -1,4 +1,5 @@
 import pygame, Key, Gate, Level, sys, EndScreen
+import enemy as enemyFile
 
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
@@ -14,7 +15,7 @@ pygame.mixer.music.load('../resources/Surreptitious.OGG')
 p1Color="red"
 p2Color="red" 
    
-def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
+def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, reset):
     if not reset:
         current_level_num += 1
     
@@ -28,14 +29,26 @@ def resetLevel(playerOne, playerTwo, current_level_num, current_level, reset):
     playerTwo.speedY = 0
     playerOne.hasKey = False
     playerTwo.hasKey = False
-    
+    enemy.rect.x = 200
+    enemy.rect.y = SCREEN_HEIGHT-20-80
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
-        
+    
+    if enemy.crouching:
+        enemy.standUp(current_level.platform_list)
+
     if current_level_num == 4:
         playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
         playerTwo.rect.x = 20
-    
+    playerOne.rightIDX = 2
+    playerTwo.rightIDX = 2
+    enemy.rightIDX = 2
+    playerOne.image = playerOne.rightImages[playerOne.rightIDX]
+    playerOne.image = pygame.transform.scale(playerOne.image, (playerOne.width, playerOne.height))
+    playerTwo.image = playerTwo.rightImages[playerTwo.rightIDX]
+    playerTwo.image = pygame.transform.scale(playerTwo.image, (playerTwo.width, playerTwo.height))
+    enemy.image = enemy.rightImages[enemy.rightIDX]
+    enemy.image = pygame.transform.scale(enemy.image, (enemy.width, enemy.height))
     return current_level_num
 
 #called by the Main Menu
@@ -84,12 +97,12 @@ def load(current_level_num):
     #TODO: initialize them in a different location depending on the level number
     playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1,p1Color)
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
-    
+    enemy = enemyFile.Enemy(500,SCREEN_HEIGHT-20-80)
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
     if current_level_num != 1:
-        current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+        current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
         current_level = Level.Level(current_level_num)
     
     
@@ -109,9 +122,21 @@ def load(current_level_num):
                         pygame.mixer.music.fadeout(100)
                         EndScreen.load()
                         return 0
-                    current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
+                    current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
-                    
+                
+                if event.key == pygame.K_f:
+                    enemy.go_left()
+                if event.key == pygame.K_t:
+                    if enemy.crouching:
+                        enemy.standUp(current_level.platform_list)
+                    else:
+                        enemy.jump()
+                if event.key == pygame.K_g:
+                    enemy.crouch()
+                if event.key == pygame.K_h:
+                    enemy.go_right()
+                
                 if event.key == pygame.K_w:
                     playerOne.jump()
                 if event.key == pygame.K_a:
@@ -141,6 +166,11 @@ def load(current_level_num):
                     playerTwo.stop()
                 if event.key == pygame.K_RIGHT and playerTwo.speedX > 0:
                     playerTwo.stop()
+
+                if event.key ==pygame.K_f and enemy.speedX < 0:
+                    enemy.stop()
+                if event.key == pygame.K_h and enemy.speedX > 0:
+                    enemy.stop()
                     
             if event.type == pygame.MOUSEBUTTONDOWN:
                 game = 2
@@ -148,7 +178,7 @@ def load(current_level_num):
         #updates the players and sees if they have the conditions to finish the level
         [levelCompleteOne,dead1] = playerOne.update(current_level.platform_list, playerTwo, muted)
         [levelCompleteTwo,dead2] = playerTwo.update(current_level.platform_list, playerOne, muted)
-        
+        [killed1,killed2] = enemy.update(current_level.platform_list,[playerOne,playerTwo])
         current_level.update(playerOne, playerTwo)
         
         if levelCompleteOne and levelCompleteTwo:
@@ -164,10 +194,10 @@ def load(current_level_num):
                 return 0
             else:
                 #restarts the players and loads the next level
-                current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, False)
+                current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, False)
                 current_level = Level.Level(current_level_num)
-        elif dead1 or dead2:
-            current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+        elif dead1 or dead2 or killed1 or killed2:
+            current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
             current_level = Level.Level(current_level_num)
         #draw the platforms
         current_level.draw(screen)
@@ -175,6 +205,7 @@ def load(current_level_num):
         #draw the players
         playerOne.draw(screen)
         playerTwo.draw(screen)
+        enemy.draw(screen)
         tutorialText = current_level.message
         tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
         screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
@@ -192,7 +223,7 @@ def load(current_level_num):
             muted = Button.mouseClick(mute, muteSize, muteLoc, 3, muted)
         
         if resetClicked:
-            current_level_num = resetLevel(playerOne, playerTwo, current_level_num, current_level, True)
+            current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
             current_level = Level.Level(current_level_num)
             
         if homeClicked:
