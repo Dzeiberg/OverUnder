@@ -307,19 +307,23 @@ class Enemy(pygame.sprite.Sprite):
 			#go towards playerOne
 			if self.rect.x-playerOne.rect.x < 0:
 				self.speedX = 1
-			else:
+			elif self.rect.x - playerOne.rect.x > 0:
 				self.speedX = -1
+			else:
+				self.speedX = 0
 			
 		elif abs(d1) > abs(d2):
 			#print "P2"
 			#go towards playerTwo
 			if self.rect.x-playerTwo.rect.x < 0:
 				self.speedX = 1
-			else:
+			elif self.rect.x-playerTwo.rect.x > 0:
 				self.speedX = -1
+			else:
+				self.speedX = 0
 		else:
 			#print "IDK"
 			#otherwise just go forward
-			self.speedX = 1
+			self.speedX = 0
 
 		
