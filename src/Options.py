@@ -36,7 +36,9 @@ class Box(pygame.sprite.Sprite):
        
 
 def load():
-    
+    boxPos = None
+    boxPos2 = None
+
     pygame.display.set_caption('Options')
 
     screenSize = 1280, 720
@@ -94,9 +96,7 @@ def load():
     
     global game
     game = 0
-    boxPos = 0
-    boxPos2 = 5
-    main.p2Color="purple"
+    
     while game == 0 :
         
         #screen.fill(white)
@@ -115,7 +115,36 @@ def load():
         screen.blit(green2.image,green2)
         screen.blit(blue2.image,blue2)
         screen.blit(purple2.image,purple2)
+
+        #making sure the highlighted box is in the right place
+        if main.p1Color == "red":
+            boxPos = 0
+        elif main.p1Color =="orange":
+            boxPos = 1
+        elif main.p1Color =="yellow":
+            boxPos = 2
+        elif main.p1Color =="green":
+            boxPos = 3
+        elif main.p1Color =="blue":
+            boxPos = 4
+        elif main.p1Color =="purple":
+            boxPos = 5
+             
+        if main.p2Color =="red":
+            boxPos2 = 0
+        elif main.p2Color =="orange":
+            boxPos2 = 1
+        elif main.p2Color =="yellow":
+            boxPos2 = 2
+        elif main.p2Color =="green":
+            boxPos2 = 3
+        elif main.p2Color =="blue":
+            boxPos2 = 4
+        elif main.p2Color =="purple":
+            boxPos2 = 5    
         
+            
+        #actually puts the block on the screen
         if boxPos == 0:
             screen.blit(BoxRed1.image, BoxRed1)
         elif boxPos == 1:
@@ -142,6 +171,8 @@ def load():
         elif boxPos2 == 5:
             screen.blit(BoxPurple2.image, BoxPurple2)
         
+
+            
 
         
         for event in pygame.event.get():
