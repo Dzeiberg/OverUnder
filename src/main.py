@@ -167,9 +167,7 @@ def load(current_level_num):
                 if event.key == pygame.K_RIGHT and playerTwo.speedX > 0:
                     playerTwo.stop()
 
-                if event.key ==pygame.K_f and enemy.speedX < 0:
-                    enemy.stop()
-                if event.key == pygame.K_h and enemy.speedX > 0:
+                if not (enemy.speedX == 0):
                     enemy.stop()
                     
             if event.type == pygame.MOUSEBUTTONDOWN:
