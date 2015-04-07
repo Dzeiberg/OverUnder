@@ -29,7 +29,7 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
     playerTwo.speedY = 0
     playerOne.hasKey = False
     playerTwo.hasKey = False
-    enemy.rect.x = 200
+    enemy.rect.x = -100
     enemy.rect.y = SCREEN_HEIGHT-20-80
     if playerTwo.crouching:
         playerTwo.standUp(current_level.platform_list)
@@ -97,7 +97,7 @@ def load(current_level_num):
     #TODO: initialize them in a different location depending on the level number
     playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1,p1Color)
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
-    enemy = enemyFile.Enemy(500,SCREEN_HEIGHT-20-80)
+    enemy = enemyFile.Enemy(-100,SCREEN_HEIGHT-20-80)
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
