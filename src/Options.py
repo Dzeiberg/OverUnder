@@ -95,7 +95,8 @@ def load():
     global game
     game = 0
     boxPos = 0
-    boxPos2 = 0
+    boxPos2 = 5
+    main.p2Color="purple"
     while game == 0 :
         
         #screen.fill(white)
