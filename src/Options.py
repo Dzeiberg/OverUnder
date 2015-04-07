@@ -98,7 +98,7 @@ def load():
     boxPos2 = 0
     while game == 0 :
         
-        screen.fill(white)
+        #screen.fill(white)
         
         screen.blit(title.image, title)
         screen.blit(backButton.image, backButton)

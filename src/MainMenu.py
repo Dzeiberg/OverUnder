@@ -76,7 +76,7 @@ def menu(level_num):
     game = 0
     
     while game == 0:
-        screen.fill(blue) 
+        #screen.fill(blue) 
         
         #printing the images to the screen
         screen.blit(bg.image, bg)
