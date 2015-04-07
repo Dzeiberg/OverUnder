@@ -13,7 +13,7 @@ pygame.mixer.init()
 #and is credited to Tanner Helland.
 pygame.mixer.music.load('../resources/Surreptitious.OGG')
 p1Color="red"
-p2Color="red" 
+p2Color="purple" 
    
 def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, reset):
     if not reset:
