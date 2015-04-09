@@ -322,14 +322,7 @@ class Player(pygame.sprite.Sprite):
                 #if moving right, place the player to the left of the platform
                 elif self.speedX < 0:
                     self.rect.left = block.rect.right
-            #if it's dirt
-            elif isinstance(block, Level.Dirt):
-                #if moving left, place the player to the right of the platform
-                if self.speedX > 0:
-                    self.rect.right = block.rect.left
-                #if moving right, place the player to the left of the platform
-                elif self.speedX < 0:
-                    self.rect.left = block.rect.right
+
             #if it's a key
             elif isinstance(block,Key.key) and not self.hasKey:
                 #player now has a key
@@ -365,7 +358,7 @@ class Player(pygame.sprite.Sprite):
                 block.activate()
             
             #just like collisions with x direction
-            if isinstance(block, Level.Platform) or isinstance(block, Level.Dirt):
+            if isinstance(block, Level.Platform):
                 #If the player is under a wall, stop the player's and the wall's movement
 
                 if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
@@ -454,7 +447,7 @@ class Player(pygame.sprite.Sprite):
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
         
         for block in collision_list:
-            if isinstance(block, Level.Platform) or isinstance(block, Level.Dirt):
+            if isinstance(block, Level.Platform):
                 self.crouch()
                 break
         

@@ -45,7 +45,7 @@ class Level(object):
                 "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
                 "D                                                              D",
                 "D                                                              D",
-                "D                              K                             G D",
+                "D                              K                              GD",
                 "DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPD"]
         
         elif levelNum == 2:
@@ -445,11 +445,11 @@ class Platform(pygame.sprite.Sprite):
         self.rect.x = x
         self.rect.y = y
         
-class Dirt(pygame.sprite.Sprite):
+class Dirt(Platform):
     def __init__(self, x, y):
-        pygame.sprite.Sprite.__init__(self)
+        Platform.__init__(self, x, y)
         
-        #makes dirt a black box
+        #makes dirt a brown box
         self.image = pygame.Surface([20, 20])
         self.image.fill((178,126,68))
     
