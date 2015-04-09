@@ -11,237 +11,237 @@ class Level(object):
         
         if levelNum == 1:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                             K                                P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                  PPPPPPPPPPPPPPPPPPPPPPPPP                   P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                              K                              GP",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                             K                                D",
+                "D                  PPPPPPPPPPPPPPPPPPPPPPPPP                   D",
+                "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
+                "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
+                "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
+                "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
+                "D                  DDDDDDDDDDDDDDDDDDDDDDDDD                   D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                              K                             G D",
+                "DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPD"]
         
         elif levelNum == 2:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                   K                        K                GP",
-                "PPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                   K                        K                GD",
+                "DPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPD"]
         
         elif levelNum == 3:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                               K                              P",
-                "P                          PPPPP PPPP                          P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P             PPPPPPPP                                         P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P         PPPPPPPP PPP                                         P",
-                "P         PPPPPPPPPPPP                                         P",
-                "P         PPPP                                                 P",
-                "P         PPPP                                                 P",
-                "P         PPPP   K                                            GP",
-                "PPPPPPPPP PPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                               K                              D",
+                "D                          PPPPP PPPP                          D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D             PPPPPPPP                                         D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D         PPPPPPPP PPP                                         D",
+                "D         DDDDDDDDDDDD                                         D",
+                "D         DDDD                                                 D",
+                "D         DDDD                                                 D",
+                "D         DDDD   K                                            GD",
+                "DPPPPPPPP DDDDPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPD"]
         
         elif levelNum == 4:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                      P",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                     P        P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                       K                     GP",
-                "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                       K                      D",
+                "DPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                     D        D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                       K                     GD",
+                "DPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPD"]
         
         elif levelNum == 5:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                             K                P",
-                "P                                        PPPPP PPPPP           P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                                                              P",
-                "P         SSSS                                                 P",
-                "P         PPPP       PPPPP                                     P",
-                "P         PPPP                                                 P",
-                "P         PPPP                                                 P",
-                "P         PPPP         K                                      GP",
-                "PPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                             K                D",
+                "D                                        PPPPP PPPPP           D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                                                              D",
+                "D         SSSS                                                 D",
+                "D         DDDD       PPPPP                                     D",
+                "D         DDDD                                                 D",
+                "D         DDDD                                                 D",
+                "D         DDDD         K                                      GD",
+                "DPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPD"]
             
         elif levelNum == 6:
             levelMap = [
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P                   P           P",
-                "P                              P       PPPPPP      P           P",
-                "P                              P            P      P           P",
-                "P                              P            P      P           P",
-                "P                              P            P      P           P",
-                "P                              P            P      P           P",
-                "P                              P            P      P K         P",
-                "P             PPPPPPPPPPP      P            P      PPPPP       P",
-                "P                       P      P            PPP                P",
-                "P                       P      P            PPP                P",
-                "P                       P      P            PPP                P",
-                "P                       P      P            PPP                P",
-                "P            PPPPPPPPPP P      PPPPP        PPPPPPPPPPPPPPPPPPPP",
-                "P                       P                   P                  P",
-                "P                       P                   P                  P",
-                "P                       P                   P                  P",
-                "P                       P                   P                  P",
-                "P      PPPP PPPPPPP     PPPPPPPPPPPPPPPPPPPPP                  P",
-                "P      P                                                   PP PP",
-                "P      P                                                       P",
-                "P      P                                                       P",
-                "P      P                                                       P",
-                "P      P                                                       P",
-                "P      P                                                       P",
-                "P      P                                                       P",
-                "P      PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP        PPPPP  PPPPPPPPPPPPPPPPPPPPPPP            P",
-                "P      PPPPPP                                                  P",
-                "P                                                              P",
-                "P                                                              P",
-                "P                  PPPPPPPPP      K                           GP",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
+                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
+                "D                              D                   D           D",
+                "D                              D                   D           D",
+                "D                              D                   D           D",
+                "D                              D                   D           D",
+                "D                              D       PPPPPP      D           D",
+                "D                              D            D      D           D",
+                "D                              D            D      D           D",
+                "D                              D            D      D           D",
+                "D                              D            D      D           D",
+                "D                              D            D      D K         D",
+                "D             PPPPPPPPPPP      D            D      DPPPP       D",
+                "D                       D      D            DPP                D",
+                "D                       D      D            DDD                D",
+                "D                       D      D            DDD                D",
+                "D                       D      D            DDD                D",
+                "D            PPPPPPPPPP D      DPPPP        DDDPPPPPPPPPPPPPPPPD",
+                "D                       D                   D                  D",
+                "D                       D                   D                  D",
+                "D                       D                   D                  D",
+                "D                       D                   D                  D",
+                "D      PPPP PPPPPPP     DPPPPPPPPPPPPPPPPPPPD                  D",
+                "D      D                                                   PP PD",
+                "D      D                                                       D",
+                "D      D                                                       D",
+                "D      D                                                       D",
+                "D      D                                                       D",
+                "D      D                                                       D",
+                "D      D                                                       D",
+                "D      DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP            D",
+                "D      DDDDDD        DDDDD  DDDDDDDDDDDDDDDDDDDDDDD            D",
+                "D      DDDDDD                                                  D",
+                "D                                                              D",
+                "D                                                              D",
+                "D                  PPPPPPPPP      K                           GD",
+                "DPPPPPPPPPPPPPPPPPPDDDDDDDDDPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
 
         
         for row in levelMap:
@@ -252,6 +252,9 @@ class Level(object):
                     elif col =="K":
                         k = Key.key((x,y))
                         self.platform_list.add(k)
+                    elif col =="D":
+                        d = Dirt(x, y)
+                        self.platform_list.add(d)
                     elif col =="G":
                         g = Gate.gate((x,y))
                         self.platform_list.add(g)
@@ -390,10 +393,27 @@ class Level(object):
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y):
         pygame.sprite.Sprite.__init__(self)
+        
+        #makes platform a black box
+        #self.image = pygame.Surface([20, 20])
+        #self.image.fill((0, 0, 0))
+        
+        #makes Platform an image
+        self.image = pygame.image.load("../resources/grass.png").convert() 
+        self.image = pygame.transform.scale(self.image, (20, 20))
+    
+        self.rect = self.image.get_rect()
+        self.rect.x = x
+        self.rect.y = y
+        
+class Dirt(pygame.sprite.Sprite):
+    def __init__(self, x, y):
+        pygame.sprite.Sprite.__init__(self)
+        
+        #makes dirt a black box
         self.image = pygame.Surface([20, 20])
-        
-        self.image.fill((0, 0, 0))
-        
+        self.image.fill((178,126,68))
+    
         self.rect = self.image.get_rect()
         self.rect.x = x
         self.rect.y = y
@@ -445,8 +465,11 @@ class Button(pygame.sprite.Sprite):
     def __init__(self, x, y, wall):
         pygame.sprite.Sprite.__init__(self)
         
-        self.image = pygame.Surface([20,20])
-        self.image.fill((255, 0, 0))
+        #self.image = pygame.Surface([20,20])
+        #self.image.fill((255, 0, 0))
+        
+        self.image = pygame.image.load("../resources/redButton.png").convert() 
+        self.image = pygame.transform.scale(self.image, (20, 20))
         
         self.rect = self.image.get_rect()
         self.rect.x = x
@@ -463,9 +486,14 @@ class Button(pygame.sprite.Sprite):
     
     def updateColor(self):
         if (self.activated):
-            self.image.fill((0, 255, 0))
+            #self.image.fill((0, 255, 0))
+            self.image = pygame.image.load("../resources/greenButton.png").convert() 
+            self.image = pygame.transform.scale(self.image, (20, 20))
         else:
-            self.image.fill((255, 0, 0))
+            #self.image.fill((255, 0, 0))
+            self.image = pygame.image.load("../resources/redButton.png").convert() 
+            self.image = pygame.transform.scale(self.image, (20, 20))
+            
 class Spike(Platform):
     def __init__(self,x,y,width,height):
         Platform.__init__(self,x,y)
