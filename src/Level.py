@@ -449,9 +449,13 @@ class Dirt(Platform):
     def __init__(self, x, y):
         Platform.__init__(self, x, y)
         
-        #makes dirt a brown box
-        self.image = pygame.Surface([20, 20])
-        self.image.fill((178,126,68))
+        #makes Dirt a brown box
+        #self.image = pygame.Surface([20, 20])
+        #self.image.fill((178,126,68))
+        
+        #makes dirt an image
+        self.image = pygame.image.load("../resources/ground.png").convert() 
+        self.image = pygame.transform.scale(self.image, (20, 20))
     
         self.rect = self.image.get_rect()
         self.rect.x = x
