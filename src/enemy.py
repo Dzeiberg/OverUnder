@@ -75,6 +75,15 @@ class Enemy(pygame.sprite.Sprite):
 				elif self.speedX < 0:
 					self.rect.left = block.rect.right
 				self.crouch()
+			#if it's Dirt
+			elif isinstance(block, Level.Dirt):
+				#if moving left, place the player to the right of the platform
+				if self.speedX > 0:
+					self.rect.right = block.rect.left
+				#if moving right, place the player to the left of the platform
+				elif self.speedX < 0:
+					self.rect.left = block.rect.right
+				self.crouch()
 			#if it's a gate
 			elif isinstance(block, Gate.gate):
 				self.speedX *= -1 
