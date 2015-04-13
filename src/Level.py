@@ -1,5 +1,14 @@
 import pygame, Key, Gate
 
+class Image(pygame.sprite.Sprite):
+    def __init__(self, filename, size):
+        pygame.sprite.Sprite.__init__(self)
+        self.image = pygame.image.load(filename)
+        self.image = pygame.transform.scale(self.image, (size))
+
+blue = 102, 255, 255
+bg = Image("../resources/background1.png", (1280, 720))
+
 class Level(object):
     platform_list = None
             
@@ -427,9 +436,12 @@ class Level(object):
             button.deactivate()
         
     def draw(self, screen):
-        screen.fill((255, 255, 255))
-        self.platform_list.draw(screen)
+        #screen.fill(blue)
         
+        screen.blit(bg.image, bg)
+        
+        self.platform_list.draw(screen)
+    
 
 class Platform(pygame.sprite.Sprite):
     def __init__(self, x, y):
@@ -450,7 +462,6 @@ class Platform(pygame.sprite.Sprite):
 class Dirt(Platform):
     def __init__(self, x, y):
         Platform.__init__(self, x, y)
-        
         #makes Dirt a brown box
         #self.image = pygame.Surface([20, 20])
         #self.image.fill((178,126,68))
