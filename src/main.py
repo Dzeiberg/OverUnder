@@ -32,7 +32,7 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
     enemy.rect.x = -100
     enemy.rect.y = SCREEN_HEIGHT-20-80
     if playerTwo.crouching:
-        playerTwo.standUp(current_level.platform_list)
+        playerTwo.standUp(current_level.platform_list, playerOne)
     
     if enemy.crouching:
         enemy.standUp(current_level.platform_list)
@@ -156,7 +156,7 @@ def load(current_level_num, muted):
                     playerTwo.go_right()
                 if event.key == pygame.K_UP: 
                     if playerTwo.crouching:
-                        playerTwo.standUp(current_level.platform_list)
+                        playerTwo.standUp(current_level.platform_list, playerOne)
                     else:
                         playerTwo.jump()  
                 elif event.key == pygame.K_DOWN and playerTwo.onGround and (playerTwo.crouching == False):
@@ -427,7 +427,7 @@ class Player(pygame.sprite.Sprite):
 
     #function for player Two
     #TODO: perhaps make a new class for PlayerTwo that inherits from Player
-    def standUp(self, platform_list):
+    def standUp(self, platform_list, otherPlayer):
         #create new sprite for standing up
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load("../resources/"+self.color+"/player.png").convert()
@@ -449,13 +449,16 @@ class Player(pygame.sprite.Sprite):
         
         self.crouching = False
         
-        #if standing up makes you collide with another platform, go back to crouching
-        collision_list = pygame.sprite.spritecollide(self, platform_list, False)
+        if pygame.sprite.collide_rect(self, otherPlayer):
+            self.crouch()
+        else:
+            #if standing up makes you collide with another platform, go back to crouching
+            collision_list = pygame.sprite.spritecollide(self, platform_list, False)
+            for block in collision_list:
+                if isinstance(block, Level.Platform):
+                    self.crouch()
+                    break
         
-        for block in collision_list:
-            if isinstance(block, Level.Platform):
-                self.crouch()
-                break
         
     #only for player Two       
     def crouch(self):
