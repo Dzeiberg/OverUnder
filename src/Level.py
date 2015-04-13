@@ -162,7 +162,7 @@ class Level(object):
                 "                                                      D         ",
                 "                                                                ",
                 "                                                                ",
-                "                                        K                      G",
+                "                                        K                     G ",
                 "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
         elif levelNum == 5:
@@ -201,7 +201,7 @@ class Level(object):
                 "                                              PP                ",
                 "                                              DD                ",
                 "                                              DD                ",
-                "                                   K          DD               G",
+                "                                   K          DD              G ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 6:
@@ -240,7 +240,7 @@ class Level(object):
                 "          DDDD       PPPPP                                      ",
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
-                "          DDDD         K                                       G",
+                "          DDDD         K                                      G ",
                 "PPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
         elif levelNum == 7:
@@ -279,7 +279,7 @@ class Level(object):
                 "       DDDDDDDD                                                 ",
                 "                                                                ",
                 "                                                                ",
-                "                   PPPPPPPPP      K                            G",
+                "                   PPPPPPPPP      K                           G ",
                 "PPPPPPPPPPPPPPPPPPPDDDDDDDDDPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
 
         
