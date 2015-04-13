@@ -68,7 +68,7 @@ def load(current_level_num, muted):
     bg_image = pygame.image.load("../resources/background1.png").convert()
     bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
-    TOTAL_LEVELS = 6
+    TOTAL_LEVELS = 7
     
     #play background music
     #backgroundMusic.play(-1, 0)
@@ -216,8 +216,8 @@ def load(current_level_num, muted):
         screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
         
         messageText = current_level.levelText
-        messageWrite = font.render(messageText, 1, [255, 255, 255])
-        screen.blit(messageWrite, (20, 0))
+        messageWrite = font.render(messageText, 1, [0, 0, 255])
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 0))
        
         #to determine what button was pressed
         screen.blit(reset.image, reset)
@@ -407,6 +407,15 @@ class Player(pygame.sprite.Sprite):
             elif self.speedY < 0:
                 self.rect.top = otherPlayer.rect.bottom
             self.speedY = 0
+            
+        if self.rect.x <= 0:
+            self.rect.x = 0
+        if self.rect.x >= SCREEN_WIDTH - self.rect.width:
+            self.rect.x = SCREEN_WIDTH - self.rect.width
+        if self.rect.y <= 0:
+            self.rect.y = 0
+            self.speedY = 0
+        
         self.animate()
                 
          
