@@ -1,14 +1,5 @@
 import pygame, Key, Gate
 
-class Image(pygame.sprite.Sprite):
-    def __init__(self, filename, size):
-        pygame.sprite.Sprite.__init__(self)
-        self.image = pygame.image.load(filename)
-        self.image = pygame.transform.scale(self.image, (size))
-
-blue = 102, 255, 255
-bg = Image("../resources/background1.png", (1280, 720))
-
 class Level(object):
     platform_list = None
             
@@ -435,10 +426,10 @@ class Level(object):
             button.wall.update(button.activated, playerOne, playerTwo)
             button.deactivate()
         
-    def draw(self, screen):
+    def draw(self, screen, bg_image):
         #screen.fill(blue)
         
-        screen.blit(bg.image, (0, 0))
+        screen.blit(bg_image, (0, 0))
         
         self.platform_list.draw(screen)
     

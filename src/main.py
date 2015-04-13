@@ -61,13 +61,12 @@ def load(current_level_num, muted):
     pygame.font.init()
     font = pygame.font.SysFont("Courier New", 18)
     
-    tutorialText = ""
-    tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
-    
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     
     pygame.display.set_caption("Over Under")
     
+    bg_image = pygame.image.load("../resources/background1.png").convert()
+    bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
     TOTAL_LEVELS = 6
     
@@ -206,7 +205,7 @@ def load(current_level_num, muted):
             current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
             current_level = Level.Level(current_level_num)
         #draw the platforms
-        current_level.draw(screen)
+        current_level.draw(screen, bg_image)
         
         #draw the players
         playerOne.draw(screen)
