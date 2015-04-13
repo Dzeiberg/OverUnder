@@ -418,6 +418,8 @@ class Level(object):
         elif levelNum == 5:
             self.message = "Careful of the spikes and the monster!"
             
+        self.levelText = "Level " + str(levelNum)
+            
     def update(self, playerOne, playerTwo):
         for button in self.button_list:
             button.updateColor()            

@@ -212,9 +212,13 @@ def load(current_level_num, muted):
         playerOne.draw(screen)
         playerTwo.draw(screen)
         enemy.draw(screen)
-        tutorialText = current_level.message
-        tutorialWrite = font.render(tutorialText, 1, [0, 0, 255])
-        screen.blit(tutorialWrite, ((SCREEN_WIDTH - tutorialWrite.get_width())/2, 20))
+        messageText = current_level.message
+        messageWrite = font.render(messageText, 1, [0, 0, 255])
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
+        
+        messageText = current_level.levelText
+        messageWrite = font.render(messageText, 1, [255, 255, 255])
+        screen.blit(messageWrite, (20, 0))
        
         #to determine what button was pressed
         screen.blit(reset.image, reset)
