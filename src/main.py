@@ -221,15 +221,15 @@ def load(current_level_num):
         resetClicked = False
         if (game == 2):
             resetClicked = Button.mouseClick(reset, resetSize, resetLoc, 1, muted)
-            homeClicked = Button.mouseClick(home, homeSize, homeLoc, 2, muted)
-            muted = Button.mouseClick(mute, muteSize, muteLoc, 3, muted)
-        
-        if resetClicked:
-            current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
-            current_level = Level.Level(current_level_num)
-            
-        if homeClicked:
-            return current_level_num
+            if resetClicked:
+                current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, True)
+                current_level = Level.Level(current_level_num)
+            else:
+                homeClicked = Button.mouseClick(home, homeSize, homeLoc, 2, muted)
+                if homeClicked:
+                    return current_level_num
+                else:
+                    muted = Button.mouseClick(mute, muteSize, muteLoc, 3, muted)
         
         #for 60fps
         #DOESN'T WORK ON MACS
@@ -600,6 +600,5 @@ class Button(pygame.sprite.Sprite):
                         self.image = pygame.transform.scale(self.image, self.size)
                         return True
             
-        
 if(__name__ == "__main__"):
     load(1)
