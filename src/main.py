@@ -54,7 +54,7 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
     return current_level_num
 
 #called by the Main Menu
-def load(current_level_num):
+def load(current_level_num, muted):
     global p1Color,p2Color
     pygame.init()
     
@@ -75,7 +75,8 @@ def load(current_level_num):
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     gateSound = pygame.mixer.Sound('../resources/Unlock.ogg')
-    muted = False
+    if muted:
+        pygame.mixer.music.pause()
  
     #creating the reset button
     resetLoc = (30, 30)
@@ -90,7 +91,10 @@ def load(current_level_num):
     #creating the mute button
     muteLoc = (144, 30)
     muteSize = (45, 45)
-    mute = Button("../resources/sound.png", muteLoc, muteSize)
+    if not muted:
+        mute = Button("../resources/sound.png", muteLoc, muteSize)
+    else:
+        mute = Button("../resources/soundMute.png", muteLoc, muteSize)
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -123,7 +127,7 @@ def load(current_level_num):
                     if current_level_num == TOTAL_LEVELS:
                         pygame.mixer.music.fadeout(100)
                         EndScreen.load()
-                        return 0
+                        return [0, muted]
                     current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, False)
                     current_level = Level.Level(current_level_num)
                 
@@ -193,7 +197,7 @@ def load(current_level_num):
             if current_level_num == TOTAL_LEVELS:
                 pygame.mixer.music.fadeout(100)
                 EndScreen.load()
-                return 0
+                return [0, muted]
             else:
                 #restarts the players and loads the next level
                 current_level_num = resetLevel(playerOne, playerTwo,enemy, current_level_num, current_level, False)
@@ -227,7 +231,7 @@ def load(current_level_num):
             else:
                 homeClicked = Button.mouseClick(home, homeSize, homeLoc, 2, muted)
                 if homeClicked:
-                    return current_level_num
+                    return [current_level_num, muted]
                 else:
                     muted = Button.mouseClick(mute, muteSize, muteLoc, 3, muted)
         
@@ -237,7 +241,7 @@ def load(current_level_num):
         
         pygame.display.update()
     
-    return 0
+    return [0, muted]
 
 #Player class
 class Player(pygame.sprite.Sprite):
@@ -601,4 +605,4 @@ class Button(pygame.sprite.Sprite):
                         return True
             
 if(__name__ == "__main__"):
-    load(1)
+    load(1, False)
