@@ -438,7 +438,7 @@ class Level(object):
     def draw(self, screen):
         #screen.fill(blue)
         
-        screen.blit(bg.image, bg)
+        screen.blit(bg.image, (0, 0))
         
         self.platform_list.draw(screen)
     
