@@ -78,17 +78,17 @@ def load(current_level_num, muted):
         pygame.mixer.music.pause()
  
     #creating the reset button
-    resetLoc = (30, 30)
+    resetLoc = (20, 20)
     resetSize = (45, 45)
     reset = Button("../resources/reset.png", resetLoc, resetSize)
     
     #creating the home button
-    homeLoc = (87, 30)
+    homeLoc = (77, 20)
     homeSize = (45, 45)
     home = Button("../resources/home.png", homeLoc, homeSize)
     
     #creating the mute button
-    muteLoc = (144, 30)
+    muteLoc = (134, 20)
     muteSize = (45, 45)
     if not muted:
         mute = Button("../resources/sound.png", muteLoc, muteSize)
@@ -213,11 +213,11 @@ def load(current_level_num, muted):
         enemy.draw(screen)
         messageText = current_level.message
         messageWrite = font.render(messageText, 1, [0, 0, 255])
-        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 40))
         
         messageText = current_level.levelText
         messageWrite = font.render(messageText, 1, [0, 0, 255])
-        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 0))
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
        
         #to determine what button was pressed
         screen.blit(reset.image, reset)

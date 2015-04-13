@@ -45,7 +45,7 @@ class Level(object):
                 "                   DDDDDDDDDDDDDDDDDDDDDDDDD                    ",
                 "                                                                ",
                 "                                                                ",
-                "                              K                                G",
+                "                              K                               G ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 2:
@@ -84,7 +84,7 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "                    K                        K                 G",
+                "                    K                        K                G ",
                 "PPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 3:
@@ -123,7 +123,7 @@ class Level(object):
                 "          DDDDDDDDDDDD                                          ",
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
-                "          DDDD   K                                             G",
+                "          DDDD   K                                            G ",
                 "PPPPPPPPP DDDDPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
         
         elif levelNum == 4:
@@ -246,7 +246,7 @@ class Level(object):
         elif levelNum == 7:
             levelMap = [
                 "                                                   D            ",
-                "                               D                   D            ",
+                "                                                   D            ",
                 "                               D                   D            ",
                 "                               D                   D            ",
                 "                               D                   D            ",
