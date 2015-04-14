@@ -68,32 +68,38 @@ def load(current_level_num, muted):
     bg_image = pygame.image.load("../resources/background1.png").convert()
     bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
-    TOTAL_LEVELS = 6
+    TOTAL_LEVELS = 7
     
     #play background music
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     gateSound = pygame.mixer.Sound('../resources/Unlock.ogg')
+    hurtSound = pygame.mixer.Sound('../resources/Ow.ogg')
     if muted:
         pygame.mixer.music.pause()
  
     #creating the reset button
-    resetLoc = (30, 30)
+    resetLoc = (20, 20)
     resetSize = (45, 45)
     reset = Button("../resources/reset.png", resetLoc, resetSize)
     
+    reset.image.set_colorkey([255, 255, 255])
+    
     #creating the home button
-    homeLoc = (87, 30)
+    homeLoc = (77, 20)
     homeSize = (45, 45)
     home = Button("../resources/home.png", homeLoc, homeSize)
     
+    home.image.set_colorkey([255, 216, 63])
+    
     #creating the mute button
-    muteLoc = (144, 30)
+    muteLoc = (134, 20)
     muteSize = (45, 45)
     if not muted:
         mute = Button("../resources/sound.png", muteLoc, muteSize)
     else:
         mute = Button("../resources/soundMute.png", muteLoc, muteSize)
+    mute.image.set_colorkey([255, 255, 255])
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -103,6 +109,7 @@ def load(current_level_num, muted):
     playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1,p1Color)
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
     enemy = enemyFile.Enemy(-100,SCREEN_HEIGHT-20-80)
+
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
@@ -186,6 +193,10 @@ def load(current_level_num, muted):
         [killed1,killed2] = enemy.update(current_level.platform_list,[playerOne,playerTwo])
         current_level.update(playerOne, playerTwo)
         
+        if killed1 or killed2:
+            if not muted:
+                hurtSound.play()
+        
         if levelCompleteOne and levelCompleteTwo:
 
             if not muted:
@@ -213,11 +224,11 @@ def load(current_level_num, muted):
         enemy.draw(screen)
         messageText = current_level.message
         messageWrite = font.render(messageText, 1, [0, 0, 255])
-        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 40))
         
         messageText = current_level.levelText
-        messageWrite = font.render(messageText, 1, [255, 255, 255])
-        screen.blit(messageWrite, (20, 0))
+        messageWrite = font.render(messageText, 1, [0, 0, 255])
+        screen.blit(messageWrite, ((SCREEN_WIDTH - messageWrite.get_width())/2, 20))
        
         #to determine what button was pressed
         screen.blit(reset.image, reset)
@@ -274,7 +285,7 @@ class Player(pygame.sprite.Sprite):
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
         self.painSound = pygame.mixer.Sound('../resources/Spikes.ogg')
-        self.keySound = pygame.mixer.Sound('../resources/Tone.ogg')
+        self.keySound = pygame.mixer.Sound('../resources/Item.ogg')
         self.width = 40
         self.height = 80
         
@@ -407,6 +418,15 @@ class Player(pygame.sprite.Sprite):
             elif self.speedY < 0:
                 self.rect.top = otherPlayer.rect.bottom
             self.speedY = 0
+            
+        if self.rect.x <= 0:
+            self.rect.x = 0
+        if self.rect.x >= SCREEN_WIDTH - self.rect.width:
+            self.rect.x = SCREEN_WIDTH - self.rect.width
+        if self.rect.y <= 0:
+            self.rect.y = 0
+            self.speedY = 0
+        
         self.animate()
                 
          
@@ -603,11 +623,13 @@ class Button(pygame.sprite.Sprite):
                         pygame.mixer.music.unpause()
                         self.image = pygame.image.load("../resources/sound.png").convert()
                         self.image = pygame.transform.scale(self.image, self.size)
+                        self.image.set_colorkey([255, 255, 255])
                         return False
                     else:
                         pygame.mixer.music.pause()
                         self.image = pygame.image.load("../resources/soundMute.png").convert()
                         self.image = pygame.transform.scale(self.image, self.size)
+                        self.image.set_colorkey([255, 255, 255])
                         return True
             
 if(__name__ == "__main__"):

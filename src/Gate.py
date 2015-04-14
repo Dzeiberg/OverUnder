@@ -7,7 +7,7 @@ class gate(pygame.sprite.Sprite):
 		# load the image, converting the pixel format for optimization
 		self.image = pygame.image.load("../resources/gate.png").convert()
 		# make 'color' transparent on the image
-		self.image.set_colorkey((102,255,255)) 
+		self.image.set_colorkey((255,255,255)) 
 		# resize image to 40x40 px
 		self.image = pygame.transform.scale(self.image, (60,120))    
 		# set the rectangle defined for this image for collision detection
