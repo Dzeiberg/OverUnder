@@ -74,6 +74,7 @@ def load(current_level_num, muted):
     #backgroundMusic.play(-1, 0)
     pygame.mixer.music.play(-1, 0)
     gateSound = pygame.mixer.Sound('../resources/Unlock.ogg')
+    hurtSound = pygame.mixer.Sound('../resources/Ow.ogg')
     if muted:
         pygame.mixer.music.pause()
  
@@ -103,6 +104,7 @@ def load(current_level_num, muted):
     playerOne = Player(20, SCREEN_HEIGHT - 20 - 80, 1,p1Color)
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
     enemy = enemyFile.Enemy(-100,SCREEN_HEIGHT-20-80)
+
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
@@ -185,6 +187,10 @@ def load(current_level_num, muted):
         [levelCompleteTwo,dead2] = playerTwo.update(current_level.platform_list, playerOne, muted)
         [killed1,killed2] = enemy.update(current_level.platform_list,[playerOne,playerTwo])
         current_level.update(playerOne, playerTwo)
+        
+        if killed1 or killed2:
+            if not muted:
+                hurtSound.play()
         
         if levelCompleteOne and levelCompleteTwo:
 
@@ -274,7 +280,7 @@ class Player(pygame.sprite.Sprite):
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
         self.painSound = pygame.mixer.Sound('../resources/Spikes.ogg')
-        self.keySound = pygame.mixer.Sound('../resources/Tone.ogg')
+        self.keySound = pygame.mixer.Sound('../resources/Item.ogg')
         self.width = 40
         self.height = 80
         
