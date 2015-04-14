@@ -83,10 +83,14 @@ def load(current_level_num, muted):
     resetSize = (45, 45)
     reset = Button("../resources/reset.png", resetLoc, resetSize)
     
+    reset.image.set_colorkey([255, 255, 255])
+    
     #creating the home button
     homeLoc = (77, 20)
     homeSize = (45, 45)
     home = Button("../resources/home.png", homeLoc, homeSize)
+    
+    home.image.set_colorkey([255, 216, 63])
     
     #creating the mute button
     muteLoc = (134, 20)
@@ -95,6 +99,7 @@ def load(current_level_num, muted):
         mute = Button("../resources/sound.png", muteLoc, muteSize)
     else:
         mute = Button("../resources/soundMute.png", muteLoc, muteSize)
+    mute.image.set_colorkey([255, 255, 255])
     
     #Does not work properly on Macs
     timer = pygame.time.Clock()
@@ -618,11 +623,13 @@ class Button(pygame.sprite.Sprite):
                         pygame.mixer.music.unpause()
                         self.image = pygame.image.load("../resources/sound.png").convert()
                         self.image = pygame.transform.scale(self.image, self.size)
+                        self.image.set_colorkey([255, 255, 255])
                         return False
                     else:
                         pygame.mixer.music.pause()
                         self.image = pygame.image.load("../resources/soundMute.png").convert()
                         self.image = pygame.transform.scale(self.image, self.size)
+                        self.image.set_colorkey([255, 255, 255])
                         return True
             
 if(__name__ == "__main__"):
