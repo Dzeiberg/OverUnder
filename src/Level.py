@@ -198,7 +198,7 @@ class Level(object):
                 "D                         PPPPPPPPPPPPPPPPPP                   D",
                 "D                         DDDDDDDDDDDDDDDDDD                   D",
                 "D                         DDDDDDDDDDDDDDDDDD  SS               D",
-                "D                                             PP               D",
+                "D                         DDDDDDDDDDDDDDDDDD  PP               D",
                 "D                                             DD               D",
                 "D                                             DD               D",
                 "D                                  K          DD              GD",
