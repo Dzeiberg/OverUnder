@@ -145,9 +145,9 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
+                "                                                                ",
                 "                                        K                       ",
                 "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP         ",
-                "                                                      D         ",
                 "                                                      D         ",
                 "                                                      D         ",
                 "                                                      D         ",
@@ -267,7 +267,7 @@ class Level(object):
                 "                        D                   D                   ",
                 "                        D                   D                   ",
                 "       PPPP PPPPPPP     DPPPPPPPPPPPPPPPPPPPD                   ",
-                "       D                                                   PP PP",
+                "       DDDDDDDDDDDD                                        PP PP",
                 "       D                                                        ",
                 "       D                                                        ",
                 "       D                                                        ",
@@ -350,17 +350,17 @@ class Level(object):
             
             
         elif levelNum == 4:
-            self.wall = Wall(600, 140, 360, 120, 1)
+            self.wall = Wall(600, 160, 380, 120, 1)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(600, 520, 700, 140, 1)
+            self.wall = Wall(600, 540, 700, 140, 1)
             self.platform_list.add(self.wall)
             
-            self.button = Button(360, 360, self.wall)
+            self.button = Button(360, 380, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
@@ -387,7 +387,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(740, 320, 380, 40, 10)
+            self.wall = Wall(740, 300, 380, 40, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(820, 700, self.wall)
