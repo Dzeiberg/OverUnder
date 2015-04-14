@@ -167,7 +167,6 @@ class Level(object):
             
         elif levelNum == 5:
             levelMap = [
-<<<<<<< HEAD
                 "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
                 "D                                                              D",
                 "D                                                              D",
@@ -199,50 +198,12 @@ class Level(object):
                 "D                         PPPPPPPPPPPPPPPPPP                   D",
                 "D                         DDDDDDDDDDDDDDDDDD                   D",
                 "D                         DDDDDDDDDDDDDDDDDD  SS               D",
-                "D                                             PP               D",
+                "D                         DDDDDDDDDDDDDDDDDD  PP               D",
                 "D                                             DD               D",
                 "D                                             DD               D",
                 "D                                  K          DD              GD",
                 "DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPD"]
-=======
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                                                ",
-                "                                   K                            ",
-                "                          PPPPPPPPPPPPPPPPPP                    ",
-                "                          DDDDDDDDDDDDDDDDDD                    ",
-                "                          DDDDDDDDDDDDDDDDDD  SS                ",
-                "                                              PP                ",
-                "                                              DD                ",
-                "                                              DD                ",
-                "                                   K          DD              G ",
-                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPP"]
->>>>>>> 57f7f47737aed79c3535facb54f9d8208f22d5a0
-        
+
         elif levelNum == 6:
             levelMap = [
                 "                                                                ",
@@ -280,7 +241,7 @@ class Level(object):
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
                 "          DDDD         K                                      G ",
-                "PPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPPPDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
         elif levelNum == 7:
             levelMap = [
