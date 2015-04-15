@@ -508,7 +508,7 @@ class Player(pygame.sprite.Sprite):
 
     def jump(self):
         self.image.set_colorkey(pygame.Color("white"))
-        if self.onGround:
+        if self.onGround and not self.disabled:
             self.speedY = -12 + (4.5 * (self.playerNum - 1)) #different values for different players
             self.onGround = False
             #PLAYSOUND
