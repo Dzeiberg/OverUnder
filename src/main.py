@@ -374,7 +374,7 @@ class Player(pygame.sprite.Sprite):
         for block in collision_list:
             
             #if the player is on top of a button, activate the button
-            if isinstance(block, Level.Button):
+            if isinstance(block, Level.Button) and self.rect.y < block.rect.y:
                 block.activate()
             
             #just like collisions with x direction
