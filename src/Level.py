@@ -146,9 +146,9 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
+                "                                                                ",
                 "                                        K                       ",
                 "PPPPPPPPPPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP         ",
-                "                                                      D         ",
                 "                                                      D         ",
                 "                                                      D         ",
                 "                                                      D         ",
@@ -350,17 +350,17 @@ class Level(object):
             
             
         elif levelNum == 4:
-            self.wall = Wall(600, 160, 380, 120, 1)
+            self.wall = Wall(580, 180, 400, 120, 1)
             self.platform_list.add(self.wall)
             
             self.button = Button(360, 700, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(600, 540, 700, 140, 1)
+            self.wall = Wall(580, 560, 700, 140, 1)
             self.platform_list.add(self.wall)
             
-            self.button = Button(360, 380, self.wall)
+            self.button = Button(360, 400, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
@@ -412,9 +412,11 @@ class Level(object):
         if levelNum == 1:
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"
         elif levelNum == 2:
-            self.message = "Stand on the buttons to move the walls!"
+            self.message = "Good job! In this level, stand on the buttons to move the walls!"
         elif levelNum == 3:
-            self.message = "Click the refresh button in the corner if you want to restart the level"
+            self.message = "Nice! Click the refresh button in the corner if you want to restart the level"
+        elif levelNum == 4:
+            self.message = "Keep up the good work! Make sure to talk to your partner too!"
         elif levelNum == 5:
             self.message = "Careful of the spikes and the monster!"
             
@@ -494,20 +496,23 @@ class Wall(Platform):
         else:
             self.rect.y = self.rect.y + self.speedY
             
-            if pygame.sprite.collide_rect(self, playerOne) and self.rect.bottom > playerOne.rect.y:
-                self.rect.bottom = playerOne.rect.y + 1
-                if playerOne.onGround:
-                    playerOne.disabled = True
-                self.disabled = True
-                
-            elif pygame.sprite.collide_rect(self, playerTwo) and self.rect.bottom > playerTwo.rect.y:
-                self.rect.bottom = playerTwo.rect.y + 1
-                if playerTwo.onGround:
-                    playerTwo.disabled = True
-                self.disabled = True
-            
-            elif self.rect.y > self.bottomY:
+            if self.rect.y > self.bottomY:
                 self.rect.y = self.bottomY
+            else:
+                if pygame.sprite.collide_rect(self, playerOne) and self.rect.bottom > playerOne.rect.y:
+                    self.rect.bottom = playerOne.rect.y + 1
+                    if playerOne.onGround:
+                        playerOne.disabled = True
+                    self.disabled = True
+                    
+                elif pygame.sprite.collide_rect(self, playerTwo) and self.rect.bottom > playerTwo.rect.y:
+                    self.rect.bottom = playerTwo.rect.y + 1
+                    if playerTwo.onGround:
+                        playerTwo.disabled = True
+                    self.disabled = True
+                
+                elif self.rect.y > self.bottomY:
+                    self.rect.y = self.bottomY
            
         
 class Button(pygame.sprite.Sprite):
