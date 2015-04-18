@@ -396,7 +396,13 @@ class Player(pygame.sprite.Sprite):
                 #If the player is under a wall, stop the player's and the wall's movement
 
                 if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
-                    block.rect.bottom = self.rect.top + 1
+                    if self.onGround:
+                        block.rect.bottom = self.rect.top + 1
+                        print str(block.rect.y) + " > " + str(block.bottomY)
+                        if block.rect.y > block.bottomY:
+                            block.rect.y = block.bottomY
+                    else:
+                        self.rect.top = block.rect.bottom + 1
                     block.disabled = True
                     if self.onGround:
                         self.disabled = True
