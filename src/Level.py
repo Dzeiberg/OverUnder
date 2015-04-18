@@ -167,42 +167,42 @@ class Level(object):
             
         elif levelNum == 5:
             levelMap = [
-                "DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                                              D",
-                "D                                  K                           D",
-                "D                         PPPPPPPPPPPPPPPPPP                   D",
-                "D                         DDDDDDDDDDDDDDDDDD                   D",
-                "D                         DDDDDDDDDDDDDDDDDD  SS               D",
-                "D                         DDDDDDDDDDDDDDDDDD  PP               D",
-                "D                                             DD               D",
-                "D                                             DD               D",
-                "D                                  K          DD              GD",
-                "DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPD"]
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                   K                            ",
+                "                          PPPPPPPPPPPPPPPPPP                    ",
+                "                          DDDDDDDDDDDDDDDDDD                    ",
+                "                          DDDDDDDDDDDDDDDDDD  SS                ",
+                "                                              DD                ",
+                "                                              DD                ",
+                "                                              DD                ",
+                "                                   K          DD             G  ",
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPP"]
 
         elif levelNum == 6:
             levelMap = [
@@ -241,7 +241,7 @@ class Level(object):
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
                 "          DDDD         K                                      G ",
-                "PPPPPPPPPPDDDDPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "PPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
         elif levelNum == 7:
             levelMap = [
@@ -266,7 +266,7 @@ class Level(object):
                 "                        D                   D                   ",
                 "                        D                   D                   ",
                 "                        D                   D                   ",
-                "       PPPP PPPPPPP     DPPPPPPPPPPPPPPPPPPPD                   ",
+                "       PPPPPPPPPPPP     DPPPPPPPPPPPPPPPPPPPD                   ",
                 "       DDDDDDDDDDDD                                        PP PP",
                 "       D                                                        ",
                 "       D                                                        ",
@@ -401,7 +401,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(220, 300, 440, 100, 10)
+            self.wall = Wall(220, 300, 420, 100, 10)
             self.platform_list.add(self.wall)
             
             self.button = Button(1220, 440, self.wall)
@@ -496,12 +496,14 @@ class Wall(Platform):
             
             if pygame.sprite.collide_rect(self, playerOne) and self.rect.bottom > playerOne.rect.y:
                 self.rect.bottom = playerOne.rect.y + 1
-                playerOne.disabled = True
+                if playerOne.onGround:
+                    playerOne.disabled = True
                 self.disabled = True
                 
             elif pygame.sprite.collide_rect(self, playerTwo) and self.rect.bottom > playerTwo.rect.y:
                 self.rect.bottom = playerTwo.rect.y + 1
-                playerTwo.disabled = True
+                if playerTwo.onGround:
+                    playerTwo.disabled = True
                 self.disabled = True
             
             elif self.rect.y > self.bottomY:

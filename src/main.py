@@ -38,7 +38,7 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
         enemy.standUp(current_level.platform_list)
 
     if current_level_num == 4:
-        playerOne.rect.y = SCREEN_HEIGHT / 2 - 80
+        playerOne.rect.y = SCREEN_HEIGHT / 2 - 60
         playerTwo.rect.x = 20
     elif current_level_num == 5:
         enemy.rect.x = 400;
@@ -306,6 +306,19 @@ class Player(pygame.sprite.Sprite):
         
         self.disabled = True
         
+    def isOnGround(self, platform_list, otherPlayer):
+        self.rect.y = self.rect.y + 1
+        collision_list = pygame.sprite.spritecollide(self, platform_list, False)
+        for block in collision_list:
+            if block.rect.y > self.rect.y:
+                self.rect.y = self.rect.y - 1
+                return True
+        if pygame.sprite.collide_rect(self, otherPlayer) and otherPlayer.rect.y > self.rect.y:
+            self.rect.y = self.rect.y - 1
+            return True
+        self.rect.y = self.rect.y - 1
+        return False
+        
     def update(self, platform_list, otherPlayer, noSound):
         levelComplete = False
         dead = False
@@ -336,12 +349,13 @@ class Player(pygame.sprite.Sprite):
                 dead = True
             #if it's a platform
             elif isinstance(block, Level.Platform):
-                #if moving left, place the player to the right of the platform
-                if self.speedX > 0:
-                    self.rect.right = block.rect.left
-                #if moving right, place the player to the left of the platform
-                elif self.speedX < 0:
-                    self.rect.left = block.rect.right
+                if not((isinstance(block, Level.Wall)) and (block.rect.bottom - 10) < self.rect.y):
+                    #if moving left, place the player to the right of the platform
+                    if self.speedX > 0:
+                        self.rect.right = block.rect.left
+                    #if moving right, place the player to the left of the platform
+                    elif self.speedX < 0:
+                        self.rect.left = block.rect.right
 
             #if it's a key
             elif isinstance(block,Key.key) and not self.hasKey:
@@ -367,7 +381,7 @@ class Player(pygame.sprite.Sprite):
         #moves in y direction    
         self.rect.y += self.speedY
  
-        self.onGround = False
+        self.onGround = self.isOnGround(platform_list, otherPlayer)
  
         #checks for collisions
         collision_list = pygame.sprite.spritecollide(self, platform_list, False)
@@ -384,7 +398,8 @@ class Player(pygame.sprite.Sprite):
                 if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
                     block.rect.bottom = self.rect.top + 1
                     block.disabled = True
-                    self.disabled = True
+                    if self.onGround:
+                        self.disabled = True
                 elif isinstance(block,Level.Spike):
                     if self.speedY > 0:
                         self.rect.bottom = block.rect.top

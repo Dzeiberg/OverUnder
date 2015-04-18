@@ -30,7 +30,7 @@ def load():
     
     homeLoc = (30, 620)
     homeSize = (100, 100)
-    homeButton = Image((black),"../resources/home.png", homeLoc, homeSize)
+    homeButton = Image((255,216,63),"../resources/home.png", homeLoc, homeSize)
     
     while game == 0:
         
