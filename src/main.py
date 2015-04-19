@@ -398,7 +398,6 @@ class Player(pygame.sprite.Sprite):
                 if isinstance(block, Level.Wall) and self.rect.y > block.rect.y:
                     if self.onGround:
                         block.rect.bottom = self.rect.top + 1
-                        print str(block.rect.y) + " > " + str(block.bottomY)
                         if block.rect.y > block.bottomY:
                             block.rect.y = block.bottomY
                     else:
