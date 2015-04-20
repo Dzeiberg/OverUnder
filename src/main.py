@@ -68,7 +68,7 @@ def load(current_level_num, muted):
     bg_image = pygame.image.load("../resources/background1.png").convert()
     bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
-    TOTAL_LEVELS = 7
+    TOTAL_LEVELS = 8
     
     #play background music
     #backgroundMusic.play(-1, 0)

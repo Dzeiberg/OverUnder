@@ -202,7 +202,7 @@ class Level(object):
                 "                                              DD                ",
                 "                                              DD                ",
                 "                                              DD                ",
-                "                                   K          DD             G  ",
+                "                                   K          DD              G ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPDDPPPPPPPPPPPPPPPP"]
 
         elif levelNum == 6:
@@ -282,6 +282,45 @@ class Level(object):
                 "                                                                ",
                 "                   PPPPPPPPP      K                           G ",
                 "PPPPPPPPPPPPPPPPPPPDDDDDDDDDPPPPPPP PPPPP PPPPPPPPPPPPPPPPPPPPPP"]
+            
+        elif levelNum == 8:
+            levelMap = [
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "            PPPP                                                ",
+                "            DDDD                                                ",
+                "            DDDD                                                ",
+                "                                                    PPPP        ",
+                "                                                    DDDD        ",
+                "                                                    DDDD        ",
+                "        PPPPPPPPPPPPPPPPPPPPPP     PPPPPPPPPPPPPPPPPDDDD        ",
+                "                             D     D                            ",
+                "                             D     D                            ",
+                "                             D   G D                            ",
+                "PPPP                         DDPPPDD                        PPPP",
+                "                                                                ",
+                "                                                                ",
+                "                      P  K           K   P                      ",
+                "PPPPPPPP              DPPPPPPPPPPPPPPPPPPD                      ",
+                "                        D              D                        ",
+                "                        D              D                        ",
+                "PPPPPPPPPPPP            D              D                  PPPPPP",
+                "          DD            D              D                        ",
+                "          DD       PPPPPD              DPP                      ",
+                "          DD       D                     D                      ",
+                "          DD       D                     D                      ",
+                "          DD       D                     D                      ",
+                "          DD  PPPPPD                     DPPPPPPPP              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "        PPPPPPD                                  D              ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                        SSSSSSSSSSSSSSSS                        ",
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
 
         
         for row in levelMap:
