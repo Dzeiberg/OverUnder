@@ -58,7 +58,7 @@ Justification of Points
 
 -2 no ability to stay in game after end of turn:  0 (once the players complete the game, they have the option to go back to the main menu to play again)
 
--2 only one life: 0 (the players do not have to exit the game if they die)
+-2 only one life: 0 (the players do not have to exit the game if they die, lives don’t really make sense for our game. We do not want to get the player frustrated)
 
 -2 other: 0 (we feel like our game functions as it should except for the differences between macs and PCs)
 
