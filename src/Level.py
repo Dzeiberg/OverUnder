@@ -97,6 +97,8 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
+                "                                              K                 ",
+                "                                         PPPPP PPPPP            ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
@@ -109,22 +111,21 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "                                K                               ",
-                "                           PPPPP PPPP                           ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "              PPPPPPPP                                          ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "          PPPPPPPP PPP                                          ",
-                "          DDDDDDDDDDDD                                          ",
+                "                                                                ",
+                "          PPPP                                                  ",
+                "          DDDD       PPPPP                                      ",
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
-                "          DDDD   K                                            G ",
-                "PPPPPPPPP DDDDPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "          DDDD         K                                      G ",
+                "PPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]        
+                
         
         elif levelNum == 4:
             levelMap = [
@@ -198,7 +199,7 @@ class Level(object):
                 "                          PPPPPPPPPPPPPPPPPP                    ",
                 "                          DDDDDDDDDDDDDDDDDD                    ",
                 "                          DDDDDDDDDDDDDDDDDD  SS                ",
-                "                          DDDDDDDDDDDDDDDDDD  DD                ",
+                "                                              DD                ",
                 "                                              DD                ",
                 "                                              DD                ",
                 "                                   K          DD             G  ",
@@ -214,8 +215,6 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "                                              K                 ",
-                "                                         PPPPP PPPPP            ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
@@ -228,20 +227,22 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
+                "                                K                               ",
+                "                           PPPPP PPPP                           ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
+                "              PPPPPPPP                                          ",
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
-                "                                                                ",
-                "          SSSS                                                  ",
-                "          DDDD       PPPPP                                      ",
+                "          PPPPPPPP PPP                                          ",
+                "          DDDDDDDDDDDD                                          ",
                 "          DDDD                                                  ",
                 "          DDDD                                                  ",
-                "          DDDD         K                                      G ",
-                "PPPPPPPPPPDDDDPPPPPPPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                "          DDDD   K                                            G ",
+                "PPPPPPPPP DDDDPPP PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
             
         elif levelNum == 7:
             levelMap = [
@@ -320,6 +321,37 @@ class Level(object):
             self.button_list.append(self.button)
             
         elif levelNum == 3:
+            self.wall = Wall(700, 500, 700, 200, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(460, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(660, 660, 700, 160, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(920, 180, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            
+        elif levelNum == 4:
+            self.wall = Wall(580, 180, 400, 120, 1)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(360, 700, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(580, 560, 700, 140, 1)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(360, 400, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+        elif levelNum == 6:
             self.wall = Wall(200, 400, 600, 300, 2)
             self.platform_list.add(self.wall)
             
@@ -345,37 +377,6 @@ class Level(object):
             self.platform_list.add(self.wall)
             
             self.button = Button(340, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            
-        elif levelNum == 4:
-            self.wall = Wall(580, 180, 400, 120, 1)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(360, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(580, 560, 700, 140, 1)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(360, 400, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-        elif levelNum == 6:
-            self.wall = Wall(700, 500, 700, 200, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(460, 700, self.wall)
-            self.platform_list.add(self.button)
-            self.button_list.append(self.button)
-            
-            self.wall = Wall(660, 660, 700, 160, 10)
-            self.platform_list.add(self.wall)
-            
-            self.button = Button(920, 180, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
