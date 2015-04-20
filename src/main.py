@@ -314,7 +314,7 @@ class Player(pygame.sprite.Sprite):
             if block.rect.y > self.rect.y:
                 self.rect.y = self.rect.y - 1
                 return True
-        if pygame.sprite.collide_rect(self, otherPlayer) and otherPlayer.rect.y > self.rect.y:
+        if pygame.sprite.collide_rect(self, otherPlayer) and otherPlayer.rect.y > self.rect.y and otherPlayer.onGround:
             self.rect.y = self.rect.y - 1
             return True
         self.rect.y = self.rect.y - 1
