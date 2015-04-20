@@ -301,8 +301,8 @@ class Level(object):
                 "PPPP                         DPPPPPD                        PPPP",
                 "                                                                ",
                 "                                                                ",
-                "                      P  K           K   P                      ",
-                "PPPPPPPP              DPPPPPPPPPPPPPPPPPPD                      ",
+                "                     P   K           K    P                     ",
+                "PPPPPPPP             DPPPPPPPPPPPPPPPPPPPPD                     ",
                 "                        D              D                        ",
                 "                        D              D                        ",
                 "PPPPPPPPPPPP            D              D                  PPPPPP",
@@ -320,6 +320,45 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                        SSSSSSSSSSSSSSSS                        ",
+                "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+            
+        elif levelNum == 9:
+            levelMap = [
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                                                ",
+                "                                         K                      ",
+                "                  PPPPPPPPPPPP P P PPPPPPPPPPP                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "              PPPPD                          DPPPP              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "          PPPPD            SSSSS SSSSS           DPPPP          ",
+                "                           DDDDD DDDDD                          ",
+                "                           DDDDD DDDDD                          ",
+                "                           DDDDDDDDDDD            K           G ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
 
         
@@ -448,6 +487,28 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
+        elif levelNum == 9:
+            self.wall = Wall(480, 660, 680, 240, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(600, 220, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(640, 660, 680, 240, 10)#fix
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(640, 220, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)
+            
+            self.wall = Wall(800, 660, 680, 240, 10)
+            self.platform_list.add(self.wall)
+            
+            self.button = Button(680, 220, self.wall)
+            self.platform_list.add(self.button)
+            self.button_list.append(self.button)  
+        
         self.message = ""
         if levelNum == 1:
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"

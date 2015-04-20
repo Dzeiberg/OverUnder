@@ -42,6 +42,9 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
         playerTwo.rect.x = 20
     elif current_level_num == 5:
         enemy.rect.x = 400;
+    elif current_level_num == 8:
+        enemy.rect.x = 640
+        enemy.rect.y = 300
     playerOne.rightIDX = 2
     playerTwo.rightIDX = 2
     enemy.rightIDX = 2
@@ -68,7 +71,7 @@ def load(current_level_num, muted):
     bg_image = pygame.image.load("../resources/background1.png").convert()
     bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
-    TOTAL_LEVELS = 8
+    TOTAL_LEVELS = 9
     
     #play background music
     #backgroundMusic.play(-1, 0)
