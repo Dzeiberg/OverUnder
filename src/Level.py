@@ -335,30 +335,30 @@ class Level(object):
                 "                                                                ",
                 "                                                                ",
                 "                                         K                      ",
-                "                  PPPPPPPPPPP PP PP PPPPPPPPPPP                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "                  D                           D                 ",
-                "              PPPPD                           DPPPP             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "              D                                   D             ",
-                "          PPPPDPPPP    S SSSSSSS SSSSSSS S    PPPPDPPPP         ",
-                "                       D DDDDDDD DDDDDDD D                      ",
-                "                       D DDDDDDD DDDDDDD D                      ",
-                "                       DDDDDDDDDDDDDDDDDDD        K           G ",
+                "                  PPPPPPPPPPPP P P PPPPPPPPPPP                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "                  D                          D                  ",
+                "              PPPPD                          DPPPP              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "              D                                  D              ",
+                "          PPPPD            SSSSS SSSSS           DPPPP          ",
+                "                           DDDDD DDDDD                          ",
+                "                           DDDDD DDDDD                          ",
+                "                           DDDDDDDDDDD            K           G ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
 
         
@@ -488,24 +488,24 @@ class Level(object):
             self.button_list.append(self.button)
             
         elif levelNum == 9:
-            self.wall = Wall(480, 660, 680, 100, 10)
+            self.wall = Wall(480, 660, 680, 240, 10)
             self.platform_list.add(self.wall)
             
-            self.button = Button(580, 220, self.wall)
+            self.button = Button(600, 220, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(640, 660, 680, 100, 10)#fix
+            self.wall = Wall(640, 660, 680, 240, 10)#fix
             self.platform_list.add(self.wall)
             
             self.button = Button(640, 220, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-            self.wall = Wall(800, 660, 680, 100, 10)
+            self.wall = Wall(800, 660, 680, 240, 10)
             self.platform_list.add(self.wall)
             
-            self.button = Button(700, 220, self.wall)
+            self.button = Button(680, 220, self.wall)
             self.platform_list.add(self.button)
             self.button_list.append(self.button)  
         
