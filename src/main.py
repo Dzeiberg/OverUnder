@@ -367,7 +367,7 @@ class Player(pygame.sprite.Sprite):
                 self.hasKey = True
                 #PLAYSOUND
                 if not noSound:
-                    self.keySound.play(0, 0, 0)
+                    self.keySound.play()
                 #removes the key from the screen
                 block.rect.x=-50
             #if it's a gate
@@ -430,6 +430,8 @@ class Player(pygame.sprite.Sprite):
                     
             if isinstance(block,Key.key) and not self.hasKey:
                 self.hasKey = True
+                if not noSound:
+                    self.keySound.play()
                 block.rect.x=-50
             elif isinstance(block,Gate.gate) and self.hasKey:
                 levelComplete = True
