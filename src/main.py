@@ -285,7 +285,7 @@ class Player(pygame.sprite.Sprite):
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight3Crouch.png").convert())
         self.rightCrouchImages.append(pygame.image.load("../resources/"+color+"/knightRight2Crouch.png").convert())
         self.painSound = pygame.mixer.Sound('../resources/Spikes.ogg')
-        self.keySound = pygame.mixer.Sound('../resources/Item.ogg')
+        self.keySound = pygame.mixer.Sound('../resources/Ding.ogg')
         self.width = 40
         self.height = 80
         self.ticker = 0
@@ -364,7 +364,7 @@ class Player(pygame.sprite.Sprite):
                 self.hasKey = True
                 #PLAYSOUND
                 if not noSound:
-                    self.keySound.play(0, 0, 600)
+                    self.keySound.play(0, 0, 0)
                 #removes the key from the screen
                 block.rect.x=-50
             #if it's a gate
