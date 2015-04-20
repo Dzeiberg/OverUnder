@@ -257,7 +257,7 @@ class Enemy(pygame.sprite.Sprite):
 		self.speedX = 0        
 	
 	def animate(self):
-		if self.ticker%2 == 0:
+		if self.ticker%3 == 0:
 			self.image.set_colorkey(pygame.Color("white"))
 			if self.speedX < 0 and self.speedY == 0:
 				#moving left
