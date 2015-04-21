@@ -80,7 +80,7 @@ def load(current_level_num, muted):
     screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])
     pygame.display.set_caption("Over Under")
     
-    #background image
+    #background image was taken from http://pixgood.com/cartoon-grass-and-sky.html
     bg_image = pygame.image.load("../resources/background1.png").convert()
     bg_image = pygame.transform.scale(bg_image, [SCREEN_WIDTH, SCREEN_HEIGHT])
 
