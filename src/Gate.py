@@ -1,3 +1,4 @@
+#class for the gate
 import pygame
 
 class gate(pygame.sprite.Sprite):

@@ -1,3 +1,4 @@
+#class for the key
 import pygame
 
 class key(pygame.sprite.Sprite):

@@ -1,3 +1,5 @@
+#Runs when the player reaches the congratulations screen
+
 import pygame
 from pygame.locals import *
 import sys 
@@ -9,10 +11,8 @@ white = 255, 255, 255
 black = 0, 0, 0
 
 class Image(pygame.sprite.Sprite):
-
     def __init__(self, color, filename, location, size):
         pygame.sprite.Sprite.__init__(self)
-        
         self.image = pygame.image.load(filename).convert()
         self.image.set_colorkey(color) 
         self.image = pygame.transform.scale(self.image, (size))
@@ -20,14 +20,13 @@ class Image(pygame.sprite.Sprite):
         self.rect.x = location[0]
         self.rect.y = location[1]
         
-
-# a variable to control how long to run the game
 def load():
     global screen
     screen = pygame.display.set_mode(screenSize)
     pygame.display.set_caption("Congratulations!")
     game = 0
     
+    #initialize a button to take the player back to the main menu
     homeLoc = (30, 620)
     homeSize = (100, 100)
     homeButton = Image((255,216,63),"../resources/home.png", homeLoc, homeSize)
@@ -39,8 +38,6 @@ def load():
         # Put these images on the screen
         screen.blit(EndScreen.image, EndScreen)
         screen.blit(homeButton.image, homeButton)
-        # update the game window
-        pygame.display.update()
         
         # check if the user wants to quit, by pressing the X button on the window or the escape key
         for event in pygame.event.get():
@@ -48,6 +45,7 @@ def load():
                 game = 1
                 sys.exit()
             
+            #if the home button is pressed, exit the EndScreen
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseLoc = pygame.mouse.get_pos()
                 if (mouseLoc[0] > homeLoc[0] and mouseLoc[0] < (homeLoc[0] + homeSize[0])):

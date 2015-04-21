@@ -16,14 +16,15 @@ class Image(pygame.sprite.Sprite):
         self.rect.y = location[1]
         self.location = location
         self.size = size
+    #called when the mouse is clicked
     def mouseClick(self):
         mouseLoc = pygame.mouse.get_pos()
-        
         if (mouseLoc[0] > self.location[0] and mouseLoc[0] < (self.location[0] + self.size[0])):
             if (mouseLoc[1] > self.location[1] and mouseLoc[1] < (self.location[1] + self.size[1])):
                 return True
         return False
-    
+
+#black box that goes around the current color selection
 class Box(pygame.sprite.Sprite):
     def __init__(self, color, filename, location):
         pygame.sprite.Sprite.__init__(self)
@@ -32,10 +33,10 @@ class Box(pygame.sprite.Sprite):
         self.rect = self.image.get_rect()
         self.rect.x = location[0]
         self.rect.y = location[1]
-        self.location = location
-       
+        self.location = location  
 
 def load():
+    #initialize the screen and images
     boxPos = None
     boxPos2 = None
 
@@ -53,7 +54,6 @@ def load():
     backLoc = (50, 600)
     backSize = (120, 75)
     backButton = Image("../resources/back.png", backLoc, backSize)
-
 
     squareSize = (75,75)
     redLoc = (350,290)
@@ -98,9 +98,7 @@ def load():
     game = 0
     
     while game == 0 :
-        
-        #screen.fill(white)
-        
+        #draw the color boxes
         screen.blit(title.image, title)
         screen.blit(backButton.image, backButton)
         screen.blit(red1.image,red1)
@@ -142,9 +140,8 @@ def load():
             boxPos2 = 4
         elif main.p2Color =="purple":
             boxPos2 = 5    
-        
             
-        #actually puts the block on the screen
+        #draws the red box around the current color selection
         if boxPos == 0:
             screen.blit(BoxRed1.image, BoxRed1)
         elif boxPos == 1:
@@ -171,15 +168,13 @@ def load():
         elif boxPos2 == 5:
             screen.blit(BoxPurple2.image, BoxPurple2)
         
-
-            
-
-        
         for event in pygame.event.get():
+            #exits the options screen
             if event.type == pygame.QUIT or (event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE):
                 game = 1
                 sys.exit()
-                
+            
+            #checking to see which color was pressed
             if event.type == pygame.MOUSEBUTTONDOWN:
                 mouseLoc = pygame.mouse.get_pos()
                 if (mouseLoc[0] > backLoc[0] and mouseLoc[0] < (backLoc[0] + backSize[0])):
