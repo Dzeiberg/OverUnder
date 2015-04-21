@@ -1,6 +1,6 @@
 # Over Under Main Menu
 
-import pygame, os, Options, Instructions, main, sys
+import pygame, Options, Instructions, main, sys
 from pygame.locals import * 
 
 

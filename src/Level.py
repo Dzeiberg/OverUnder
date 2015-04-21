@@ -288,7 +288,7 @@ class Level(object):
             levelMap = [
                 "                                                   D            ",
                 "                                                   D            ",
-                "                               D                   D            ",
+                "                                                   D            ",
                 "                               D                   D            ",
                 "                               D                   D            ",
                 "                               D       PPPPPP      D            ",
@@ -514,13 +514,21 @@ class Level(object):
         if levelNum == 1:
             self.message = "Each player can grab one key. Collect them both to unlock the gate!"
         elif levelNum == 2:
-            self.message = "Good job! In this level, stand on the buttons to move the walls!"
+            self.message = "You're both doing great! In this level, stand on the buttons to move the walls!"
         elif levelNum == 3:
-            self.message = "Nice! Click the refresh button in the corner if you want to restart the level"
+            self.message = "Nice! Click the refresh button in the corner if you want to restart the level."
         elif levelNum == 4:
             self.message = "Keep up the good work! Make sure to talk to your partner too!"
         elif levelNum == 5:
-            self.message = "Careful of the spikes and the monster!"
+            self.message = "Great cooperation! Be careful of the spikes and the monster in this level!"
+        elif levelNum == 6:
+            self.message = "That was amazing! For this level, make sure to think before doing!"
+        elif levelNum == 7:
+            self.message = "Good job! Here's a hint for this level: the monster chases the closest player!"
+        elif levelNum == 8:
+            self.message = "Amazing teamwork! You're almost done with the game!"
+        elif levelNum == 9:
+            self.message = "It's the final level! Timing is everything, so make sure to talk to each other!"
             
         self.levelText = "Level " + str(levelNum)
             
