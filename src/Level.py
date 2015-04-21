@@ -246,45 +246,6 @@ class Level(object):
             
         elif levelNum == 7:
             levelMap = [
-                "                                                   D            ",
-                "                                                   D            ",
-                "                               D                   D            ",
-                "                               D                   D            ",
-                "                               D                   D            ",
-                "                               D       PPPPPP      D            ",
-                "                               D            D      D            ",
-                "                               D            D      D            ",
-                "                               D            D      D            ",
-                "                               D            D      D            ",
-                "                               D            D      D K          ",
-                "              PPPPPPPPPPP      D            D      DPPPP        ",
-                "                        D      D            DPP                 ",
-                "                        D      D            DDD                 ",
-                "                        D      D            DDD                 ",
-                "                        D      D            DDD                 ",
-                "             PPPPPPPPPP D      DPPPP        DDDPPPPPPPPPPPPPPPPP",
-                "                        D                   D                   ",
-                "                        D                   D                   ",
-                "                        D                   D                   ",
-                "                        D                   D                   ",
-                "       PPPPPPPPPPPP     DPPPPPPPPPPPPPPPPPPPD                   ",
-                "       DDDDDDDDDDDD                                        PP PP",
-                "       D                                                        ",
-                "       D                                                        ",
-                "       D                                                        ",
-                "       D                                                        ",
-                "       D                                                        ",
-                "       D                                                        ",
-                "       DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP                     ",
-                "       DDDDDDDD      DDDDDDDDDDDDDDDDDDDDDDPPPP                 ",
-                "       DDDDDDDD                              DDPPPP             ",
-                "                                                                ",
-                "                                                                ",
-                "                   PPPPPPPPP      K                     PP    G ",
-                "PPPPPPPPPPPPPPPPPPPDDDDDDDDDPPPPPPP PPPPP PPPPPPPPPPPPPPDDPPPPPP"]
-            
-        elif levelNum == 8:
-            levelMap = [
                 "                                                                ",
                 "                                                                ",
                 "                                                                ",
@@ -321,6 +282,46 @@ class Level(object):
                 "                                                                ",
                 "                        SSSSSSSSSSSSSSSS                        ",
                 "PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP"]
+                
+            
+        elif levelNum == 8:
+            levelMap = [
+                "                                                   D            ",
+                "                                                   D            ",
+                "                               D                   D            ",
+                "                               D                   D            ",
+                "                               D                   D            ",
+                "                               D       PPPPPP      D            ",
+                "                               D            D      D            ",
+                "                               D            D      D            ",
+                "                               D            D      D            ",
+                "                               D            D      D            ",
+                "                               D            D      D K          ",
+                "              PPPPPPPPPPP      D            D      DPPPP        ",
+                "                        D      D            DPP                 ",
+                "                        D      D            DDD                 ",
+                "                        D      D            DDD                 ",
+                "                        D      D            DDD                 ",
+                "             PPPPPPPPPP D      DPPPP        DDDPPPPPPPPPPPPPPPPP",
+                "                        D                   D                   ",
+                "                        D                   D                   ",
+                "                        D                   D                   ",
+                "                        D                   D                   ",
+                "       PPPPPPPPPPPP     DPPPPPPPPPPPPPPPPPPPD                   ",
+                "       DDDDDDDDDDDD                                        PP PP",
+                "       D                                                        ",
+                "       D                                                        ",
+                "       D                                                        ",
+                "       D                                                        ",
+                "       D                                                        ",
+                "       D                                                        ",
+                "       DPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP                     ",
+                "       DDDDDDDD      DDDDDDDDDDDDDDDDDDDDDDPPPP                 ",
+                "       DDDDDDDD                              DDPPPP             ",
+                "                                                                ",
+                "                                                                ",
+                "                   PPPPPPPPP      K                     PP    G ",
+                "PPPPPPPPPPPPPPPPPPPDDDDDDDDDPPPPPPP PPPPP PPPPPPPPPPPPPPDDPPPPPP"]
             
         elif levelNum == 9:
             levelMap = [
@@ -458,7 +459,7 @@ class Level(object):
             self.platform_list.add(self.button)
             self.button_list.append(self.button)
             
-        elif levelNum == 7:
+        elif levelNum == 8:
             self.wall = Wall(1140, 200, 280, 100, 10)
             self.platform_list.add(self.wall)
             

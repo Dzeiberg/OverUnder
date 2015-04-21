@@ -42,7 +42,7 @@ def resetLevel(playerOne, playerTwo, enemy, current_level_num, current_level, re
         playerTwo.rect.x = 20
     elif current_level_num == 5:
         enemy.rect.x = 400;
-    elif current_level_num == 8:
+    elif current_level_num == 7:
         enemy.rect.x = 640
         enemy.rect.y = 300
     playerOne.rightIDX = 2
