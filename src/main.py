@@ -127,6 +127,8 @@ def load(current_level_num, muted):
     playerTwo = Player(80, SCREEN_HEIGHT - 20 - 80, 2,p2Color)
     enemy = enemyFile.Enemy(-100,SCREEN_HEIGHT-20-80)
 
+    if current_level_num == 0:
+        current_level_num= 1
     #sets this to the current level
     current_level = Level.Level(current_level_num)
     
